@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+
+        <style>
+            body
+            {
+                margin: 0;
+                background-color: #d1dae4;
+                padding: 0;
+                padding-top: 50px;
+                text-align: right;
+                color: #606686;
+            }
+
+            .centered_box
+            {
+                width: 600px;
+                background-color: white;
+                text-align: center;
+                border: 1px solid #a2b4c6;
+                padding: 30px;
+                margin: 0 auto;
+            }</style>
+
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <div class="centered_box">
+            <h2>Hello, please log in...</h2>
+            <form method="post" action="j_security_check" >
+                <table columns="2" role="presentation" align="center">
+                    <tr>
+                        <td><h:outputLabel for="j_username" 
+                                           value="User name:"/></td>
+                        <td><h:inputText id="j_username" autocomplete="off"  
+                                         size="20" style="margin-left: 50px" /></td>
+                    </tr>
+                    <tr>
+                        <td><h:outputLabel for="j_password" 
+                                           value="Password:"/></td>
+                        <td><h:inputSecret id="j_password" autocomplete="off" 
+                                           size="20" style="margin-left: 50px"/></td>
+                    </tr>
+                </table>
+                <br/>
+                <h:panelGroup>
+                    <h:commandButton type="submit" value="Login"/>
+                </h:panelGroup>
+            </form>
+        </div>
+    </h:body>
+</html>
+

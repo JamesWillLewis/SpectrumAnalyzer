@@ -1,0 +1,46 @@
+
+/* Default CSS stylesheets administration UI */
+
+body
+{
+    background-color: #d1dae4;
+    color: #606686;
+}
+
+#toppanel{
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 20px;
+    font-family: fantasy
+}
+
+/* A floating, bordered box */
+.centered_box
+{
+    margin: 2px;
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid #a2b4c6;
+}
+
+/* Link on left sidebar */
+.sidebar_link{
+    font-size: 20px; 
+    text-decoration: none;
+    font-weight: bold; 
+    color: #606686;
+}
+
+/* Link on left sidebar which is the current page */
+.sidebar_link_current{
+    font-size: 20px; 
+    font-weight: bold; 
+    text-decoration: none;
+    color: #6699ff;
+}
+
+/* Colour of hyperlinks for which the cursor is hovering over */
+a:hover{
+    color: #6699ff;
+}
