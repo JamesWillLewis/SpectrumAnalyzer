@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.beans;
+package za.ac.uct.cs.rfsaws.jsf;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
