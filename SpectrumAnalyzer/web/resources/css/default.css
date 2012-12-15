@@ -7,7 +7,7 @@ body
     color: #606686;
 }
 
-#toppanel{
+#top_panel{
     font-weight: bolder;
     font-style: italic;
     font-size: 20px;
@@ -15,7 +15,7 @@ body
 }
 
 /* A floating, bordered box */
-.centered_box
+.floating_box
 {
     margin: 2px;
     padding: 5px;
@@ -25,22 +25,15 @@ body
 }
 
 /* Link on left sidebar */
-.sidebar_link{
+.navigation_link{
     font-size: 20px; 
     text-decoration: none;
     font-weight: bold; 
     color: #606686;
 }
 
-/* Link on left sidebar which is the current page */
-.sidebar_link_current{
-    font-size: 20px; 
-    font-weight: bold; 
-    text-decoration: none;
-    color: #6699ff;
-}
-
 /* Colour of hyperlinks for which the cursor is hovering over */
 a:hover{
-    color: #6699ff;
+    color: white;
+    background-color: #d1dae4
 }

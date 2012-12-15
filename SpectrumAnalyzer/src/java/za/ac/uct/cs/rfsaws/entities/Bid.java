@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,52 +18,72 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table (name="NODES")
-@NamedQuery(name = "findAllNodes", query = "SELECT n FROM Node n")
+@Table (name="BIDS")
 @XmlRootElement
-public class Node implements Serializable {
+public class Bid implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nodeID;
-    private String locationCode;
+    @OneToOne
+    private Node bidder;
+    private Double bidValue;
+    @OneToOne
+    private Segment segment;
 
     /**
-     * Get the value of nodeID
+     * Get the value of segment
      *
-     * @return the value of nodeID
+     * @return the value of segment
      */
-    public String getNodeID() {
-        return nodeID;
+    public Segment getSegment() {
+        return segment;
     }
 
     /**
-     * Set the value of nodeID
+     * Set the value of segment
      *
-     * @param nodeID new value of nodeID
+     * @param segment new value of segment
      */
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
+    public void setSegment(Segment segment) {
+        this.segment = segment;
     }
 
     /**
-     * Get the value of locationCode
+     * Get the value of bidValue
      *
-     * @return the value of locationCode
+     * @return the value of bidValue
      */
-    public String getLocationCode() {
-        return locationCode;
+    public Double getBidValue() {
+        return bidValue;
     }
 
     /**
-     * Set the value of locationCode
+     * Set the value of bidValue
      *
-     * @param locationCode new value of locationCode
+     * @param bidValue new value of bidValue
      */
-    public void setLocationCode(String locationCode) {
-        this.locationCode = locationCode;
+    public void setBidValue(Double bidValue) {
+        this.bidValue = bidValue;
+    }
+
+    /**
+     * Get the value of bidder
+     *
+     * @return the value of bidder
+     */
+    public Node getBidder() {
+        return bidder;
+    }
+
+    /**
+     * Set the value of bidder
+     *
+     * @param bidder new value of bidder
+     */
+    public void setBidder(Node bidder) {
+        this.bidder = bidder;
     }
 
     public Long getId() {
@@ -84,10 +104,10 @@ public class Node implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Node)) {
+        if (!(object instanceof Bid)) {
             return false;
         }
-        Node other = (Node) object;
+        Bid other = (Bid) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,6 +116,6 @@ public class Node implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Node[ id=" + id + " ]";
+        return "za.ac.uct.cs.rfsaws.entities.Bid[ id=" + id + " ]";
     }
 }

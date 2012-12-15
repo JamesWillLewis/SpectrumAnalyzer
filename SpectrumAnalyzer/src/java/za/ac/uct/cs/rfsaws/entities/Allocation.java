@@ -1,0 +1,179 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package za.ac.uct.cs.rfsaws.entities;
+
+import java.io.Serializable;
+import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ *
+ * @author James
+ */
+@Entity
+@Table(name = "ALLOCATIONS")
+@XmlRootElement
+public class Allocation implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Double bandFreqUpper;
+    private Double bandFreqLower;
+    private Double powerConstraint;
+    @OneToOne
+    private Node masterNode;
+    private Date beginDate;
+    
+    private Date endDate;
+
+    /**
+     * Get the value of endDate
+     *
+     * @return the value of endDate
+     */
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    /**
+     * Set the value of endDate
+     *
+     * @param endDate new value of endDate
+     */
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    /**
+     * Get the value of beginDate
+     *
+     * @return the value of beginDate
+     */
+    public Date getBeginDate() {
+        return beginDate;
+    }
+
+    /**
+     * Set the value of beginDate
+     *
+     * @param beginDate new value of beginDate
+     */
+    public void setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    /**
+     * Get the value of masterNode
+     *
+     * @return the value of masterNode
+     */
+    public Node getMasterNode() {
+        return masterNode;
+    }
+
+    /**
+     * Set the value of masterNode
+     *
+     * @param masterNode new value of masterNode
+     */
+    public void setMasterNode(Node masterNode) {
+        this.masterNode = masterNode;
+    }
+
+    /**
+     * Get the value of powerConstraint
+     *
+     * @return the value of powerConstraint
+     */
+    public Double getPowerConstraint() {
+        return powerConstraint;
+    }
+
+    /**
+     * Set the value of powerConstraint
+     *
+     * @param powerConstraint new value of powerConstraint
+     */
+    public void setPowerConstraint(Double powerConstraint) {
+        this.powerConstraint = powerConstraint;
+    }
+
+    /**
+     * Get the value of bandFreqLower
+     *
+     * @return the value of bandFreqLower
+     */
+    public Double getBandFreqLower() {
+        return bandFreqLower;
+    }
+
+    /**
+     * Set the value of bandFreqLower
+     *
+     * @param bandFreqLower new value of bandFreqLower
+     */
+    public void setBandFreqLower(Double bandFreqLower) {
+        this.bandFreqLower = bandFreqLower;
+    }
+
+    /**
+     * Get the value of bandFreqUpper
+     *
+     * @return the value of bandFreqUpper
+     */
+    public Double getBandFreqUpper() {
+        return bandFreqUpper;
+    }
+
+    /**
+     * Set the value of bandFreqUpper
+     *
+     * @param bandFreqUpper new value of bandFreqUpper
+     */
+    public void setBandFreqUpper(Double bandFreqUpper) {
+        this.bandFreqUpper = bandFreqUpper;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Allocation)) {
+            return false;
+        }
+        Allocation other = (Allocation) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "za.ac.uct.cs.rfsaws.entities.Allocation[ id=" + id + " ]";
+    }
+}

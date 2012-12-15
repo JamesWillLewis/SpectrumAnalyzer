@@ -29,7 +29,4 @@ public class NodeFacade extends AbstractFacade<Node> {
         super(Node.class);
     }
 
-    public List<Node> getNodes() {
-        return em.createNamedQuery("findAllNodes").getResultList();
-    }
 }

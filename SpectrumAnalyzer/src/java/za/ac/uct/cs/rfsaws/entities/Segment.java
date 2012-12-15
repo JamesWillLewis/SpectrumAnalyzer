@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,52 +17,51 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table (name="NODES")
-@NamedQuery(name = "findAllNodes", query = "SELECT n FROM Node n")
+@Table (name="SEGMENTS")
 @XmlRootElement
-public class Node implements Serializable {
+public class Segment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nodeID;
-    private String locationCode;
+    private Double minPower;
+    private Double bandWidth;
 
     /**
-     * Get the value of nodeID
+     * Get the value of bandWidth
      *
-     * @return the value of nodeID
+     * @return the value of bandWidth
      */
-    public String getNodeID() {
-        return nodeID;
+    public Double getBandWidth() {
+        return bandWidth;
     }
 
     /**
-     * Set the value of nodeID
+     * Set the value of bandWidth
      *
-     * @param nodeID new value of nodeID
+     * @param bandWidth new value of bandWidth
      */
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
+    public void setBandWidth(Double bandWidth) {
+        this.bandWidth = bandWidth;
     }
 
     /**
-     * Get the value of locationCode
+     * Get the value of minPower
      *
-     * @return the value of locationCode
+     * @return the value of minPower
      */
-    public String getLocationCode() {
-        return locationCode;
+    public Double getMinPower() {
+        return minPower;
     }
 
     /**
-     * Set the value of locationCode
+     * Set the value of minPower
      *
-     * @param locationCode new value of locationCode
+     * @param minPower new value of minPower
      */
-    public void setLocationCode(String locationCode) {
-        this.locationCode = locationCode;
+    public void setMinPower(Double minPower) {
+        this.minPower = minPower;
     }
 
     public Long getId() {
@@ -84,10 +82,10 @@ public class Node implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Node)) {
+        if (!(object instanceof Segment)) {
             return false;
         }
-        Node other = (Node) object;
+        Segment other = (Segment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,6 +94,6 @@ public class Node implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Node[ id=" + id + " ]";
+        return "za.ac.uct.cs.rfsaws.entities.Segment[ id=" + id + " ]";
     }
 }

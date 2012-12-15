@@ -9,62 +9,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table (name="NODES")
-@NamedQuery(name = "findAllNodes", query = "SELECT n FROM Node n")
-@XmlRootElement
-public class Node implements Serializable {
-
+@Table (name="AUCTIONS")
+public class Auction implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nodeID;
-    private String locationCode;
-
-    /**
-     * Get the value of nodeID
-     *
-     * @return the value of nodeID
-     */
-    public String getNodeID() {
-        return nodeID;
-    }
-
-    /**
-     * Set the value of nodeID
-     *
-     * @param nodeID new value of nodeID
-     */
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
-    }
-
-    /**
-     * Get the value of locationCode
-     *
-     * @return the value of locationCode
-     */
-    public String getLocationCode() {
-        return locationCode;
-    }
-
-    /**
-     * Set the value of locationCode
-     *
-     * @param locationCode new value of locationCode
-     */
-    public void setLocationCode(String locationCode) {
-        this.locationCode = locationCode;
-    }
 
     public Long getId() {
         return id;
@@ -84,10 +41,10 @@ public class Node implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Node)) {
+        if (!(object instanceof Auction)) {
             return false;
         }
-        Node other = (Node) object;
+        Auction other = (Auction) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -96,6 +53,7 @@ public class Node implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Node[ id=" + id + " ]";
+        return "za.ac.uct.cs.rfsaws.entities.Auction[ id=" + id + " ]";
     }
+    
 }

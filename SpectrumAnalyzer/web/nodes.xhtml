@@ -1,46 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:head>
-        <title>RF Spectrum Analyzer Home</title>
-        <h:outputStylesheet library="css" name="default.css"/>
-    </h:head>
-    <h:body  >
+    <body>
+        <ui:composition template="./admin-template.xhtml">
 
-        <div id="container">
-            <div id="toppanel" class="centered_box" >
-                RF Spectrum-Analyzer Web-Services Administration
-            </div>
-            <div id="controlpanel">
-                <div id="linkspanel" class="centered_box" style="float: left; text-align: center; width: 60%"   >
-                    <h:form>
-
-                        <h:link class="sidebar_link"  value="Home"  outcome="index.xhtml" /> |
-                        <h:link class="sidebar_link"  value="Server"  outcome="server.xhtml" /> |
-                        <h:link class="sidebar_link_current"  value="Nodes"  outcome="nodes.xhtml" /> |
-                        <h:link class="sidebar_link" value="Auction"  outcome="index.xhtml" /> |
-                        <h:link class="sidebar_link" value="Stats"  outcome="index.xhtml"/> |
-                        <h:link class="sidebar_link" value="Help"  outcome="index.xhtml"/> 
-
-
-                    </h:form>
-                </div>
-
-
-                <div id="userpanel" class="centered_box" style="float: right ;  text-align: left; width: 20%">
-                    <h:form>
-                        <h:outputLabel value="You are logged in as: #{userBean.username}"/>
-                        <h:commandButton value="Logout" action="#{userBean.logout}" style="float: right"/>
-                    </h:form>
-                </div>  
-            </div>
-
-
-
-            <div id="contentbox" class="centered_box" style="clear: left; height: 400px">
+            <ui:define name="content">
 
                 <h:dataTable
                     var="node"
@@ -74,16 +42,10 @@
                         </h:form>
                     </h:column>
                 </h:dataTable>
+            </ui:define>
 
+        </ui:composition>
 
-
-            </div>
-
-            <div id="pagefooter" class="centered_box" style="clear: left">
-                footer information
-            </div>
-        </div>
-
-    </h:body>
-</html> 
+    </body>
+</html>
 

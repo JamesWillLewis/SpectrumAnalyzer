@@ -23,7 +23,7 @@ public class NodeBean {
     private NodeFacade nodeFacade;
     
     public List<Node> getNodes(){
-        return nodeFacade.getNodes();
+        return nodeFacade.findAll();
     }
 
     /**
