@@ -31,7 +31,7 @@ public class Allocation implements Serializable {
     private Double bandFreqLower;
     private Double powerConstraint;
     @OneToOne
-    private Node masterNode;
+    private PrimaryUserNode primaryUser;
     private Date beginDate;
     
     private Date endDate;
@@ -77,8 +77,8 @@ public class Allocation implements Serializable {
      *
      * @return the value of masterNode
      */
-    public Node getMasterNode() {
-        return masterNode;
+    public PrimaryUserNode getMasterNode() {
+        return primaryUser;
     }
 
     /**
@@ -86,8 +86,8 @@ public class Allocation implements Serializable {
      *
      * @param masterNode new value of masterNode
      */
-    public void setMasterNode(Node masterNode) {
-        this.masterNode = masterNode;
+    public void setMasterNode(PrimaryUserNode masterNode) {
+        this.primaryUser = masterNode;
     }
 
     /**

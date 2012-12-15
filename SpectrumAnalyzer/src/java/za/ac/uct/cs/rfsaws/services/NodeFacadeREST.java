@@ -17,7 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import za.ac.uct.cs.rfsaws.ejb.AbstractFacade;
-import za.ac.uct.cs.rfsaws.entities.Node;
+import za.ac.uct.cs.rfsaws.entities.SecondaryUserNode;
 
 /**
  *
@@ -25,26 +25,26 @@ import za.ac.uct.cs.rfsaws.entities.Node;
  */
 @Stateless
 @Path("/db/node")
-public class NodeFacadeREST extends AbstractFacade<Node> {
+public class NodeFacadeREST extends AbstractFacade<SecondaryUserNode> {
     
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
     public NodeFacadeREST() {
-        super(Node.class);
+        super(SecondaryUserNode.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Node entity) {
+    public void create(SecondaryUserNode entity) {
         super.create(entity);
     }
 
     @PUT
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void edit(Node entity) {
+    public void edit(SecondaryUserNode entity) {
         super.edit(entity);
     }
 
@@ -57,21 +57,21 @@ public class NodeFacadeREST extends AbstractFacade<Node> {
     @GET
     @Path("/{id}")
     @Produces({"application/xml", "application/json"})
-    public Node find(@PathParam("id") Long id) {
+    public SecondaryUserNode find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<Node> findAll() {
+    public List<SecondaryUserNode> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Node> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<SecondaryUserNode> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

@@ -9,7 +9,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import za.ac.uct.cs.rfsaws.ejb.NodeFacade;
-import za.ac.uct.cs.rfsaws.entities.Node;
+import za.ac.uct.cs.rfsaws.entities.SecondaryUserNode;
 
 /**
  *
@@ -22,7 +22,7 @@ public class NodeBean {
     @EJB
     private NodeFacade nodeFacade;
     
-    public List<Node> getNodes(){
+    public List<SecondaryUserNode> getNodes(){
         return nodeFacade.findAll();
     }
 

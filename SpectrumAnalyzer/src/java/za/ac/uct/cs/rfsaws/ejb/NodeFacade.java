@@ -8,14 +8,14 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.Node;
+import za.ac.uct.cs.rfsaws.entities.SecondaryUserNode;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class NodeFacade extends AbstractFacade<Node> {
+public class NodeFacade extends AbstractFacade<SecondaryUserNode> {
 
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class NodeFacade extends AbstractFacade<Node> {
     }
 
     public NodeFacade() {
-        super(Node.class);
+        super(SecondaryUserNode.class);
     }
 
 }

@@ -18,17 +18,74 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table (name="NODES")
-@NamedQuery(name = "findAllNodes", query = "SELECT n FROM Node n")
+@Table(name = "SECONDARY_USER_NODE")
+@NamedQuery(name = "findAllNodes", query = "SELECT n FROM SecondaryUserNode n")
 @XmlRootElement
-public class Node implements Serializable {
+public class SecondaryUserNode implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nodeID;
     private String locationCode;
+    private String nodeID;
+    private String nodeUserName;
+    private Double longitude;
+    private Double latitude;
+
+    /**
+     * Get the value of latitude
+     *
+     * @return the value of latitude
+     */
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    /**
+     * Set the value of latitude
+     *
+     * @param latitude new value of latitude
+     */
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
+     * Get the value of longitude
+     *
+     * @return the value of longitude
+     */
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    /**
+     * Set the value of longitude
+     *
+     * @param longitude new value of longitude
+     */
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    /**
+     * Get the value of nodeUserName
+     *
+     * @return the value of nodeUserName
+     */
+    public String getNodeUserName() {
+        return nodeUserName;
+    }
+
+    /**
+     * Set the value of nodeUserName
+     *
+     * @param nodeUserName new value of nodeUserName
+     */
+    public void setNodeUserName(String nodeUserName) {
+        this.nodeUserName = nodeUserName;
+    }
 
     /**
      * Get the value of nodeID
@@ -84,10 +141,10 @@ public class Node implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Node)) {
+        if (!(object instanceof SecondaryUserNode)) {
             return false;
         }
-        Node other = (Node) object;
+        SecondaryUserNode other = (SecondaryUserNode) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -27,7 +27,7 @@ public class Bid implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    private Node bidder;
+    private SecondaryUserNode bidder;
     private Double bidValue;
     @OneToOne
     private Segment segment;
@@ -73,7 +73,7 @@ public class Bid implements Serializable {
      *
      * @return the value of bidder
      */
-    public Node getBidder() {
+    public SecondaryUserNode getBidder() {
         return bidder;
     }
 
@@ -82,7 +82,7 @@ public class Bid implements Serializable {
      *
      * @param bidder new value of bidder
      */
-    public void setBidder(Node bidder) {
+    public void setBidder(SecondaryUserNode bidder) {
         this.bidder = bidder;
     }
 
