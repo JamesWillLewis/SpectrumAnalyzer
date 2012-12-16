@@ -14,5 +14,8 @@ import javax.ejb.Stateful;
 public class LeaseAllocationBean {
 
     
+    
+    
+    
 
 }

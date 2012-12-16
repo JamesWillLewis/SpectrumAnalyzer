@@ -3,13 +3,16 @@
 
 body
 {
-    background-color: #d1dae4;
-    color: #606686;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+#content_box{
+    text-align: center;
+    height: 400px;
 }
 
 #top_panel{
-    font-weight: bolder;
-    font-style: italic;
     font-size: 20px;
     font-family: fantasy
 }
@@ -17,23 +20,44 @@ body
 /* A floating, bordered box */
 .floating_box
 {
-    margin: 2px;
-    padding: 5px;
-    background-color: white;
-    text-align: center;
-    border: 1px solid #a2b4c6;
+    margin: 10px 150px;
+    padding: 5px 10px;
+    background-color: #383838;
+    border: 1px solid #5d5d5d;
+}
+
+#banner{
+    margin: 0px 150px;
+    padding: 0px 10px;
 }
 
 /* Link on left sidebar */
 .navigation_link{
-    font-size: 20px; 
+    font-size: 16px; 
     text-decoration: none;
     font-weight: bold; 
-    color: #606686;
+    color: white;
+}
+
+#linkspanel{
+
+}
+
+#linkspanel_left, #linkspanel_right{
+    margin: 0px;
+    padding: 0px;
+}
+
+#linkspanel_left{
+    text-align: left;
+    float: left;
+}
+
+#linkspanel_right{
+    text-align: right;
 }
 
 /* Colour of hyperlinks for which the cursor is hovering over */
 a:hover{
-    color: white;
-    background-color: #d1dae4
+    color: orange;
 }

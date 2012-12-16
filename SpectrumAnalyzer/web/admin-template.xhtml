@@ -6,47 +6,51 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <h:outputStylesheet library="css" name="default.css"/>
         <title>Spectrum Analyzer</title>
+
+        <h:outputScript library="js" name="common.js"/>
+
     </h:head>
 
     <h:body  >
 
         <div id="container">
-            <div id="top_panel" class="floating_box" >
-                RF Spectrum-Analyzer Web-Services Administration
-            </div>
-            
-            <div id="controlpanel">
-                <div id="linkspanel" class="floating_box" style="float: left; text-align: center; width: 60%"   >
-                    <h:form>
 
-                        <h:link class="navigation_link"  value="Home"  outcome="index.xhtml" /> |
-                        <h:link class="navigation_link"  value="Server"  outcome="server.xhtml" /> |
-                        <h:link class="navigation_link"  value="Nodes"  outcome="nodes.xhtml" /> |
-                        <h:link class="navigation_link" value="Segments"  outcome="segments.xhtml" /> |
-                        <h:link class="navigation_link" value="Leases"  outcome="leases.xhtml" /> |
-                        <h:link class="navigation_link" value="Auctions"  outcome="auctions.xhtml" /> |
+            <div id="banner">
+                <h:link outcome="index"> <h:graphicImage width="728" height="90" library="images" name="title_banner.png"/> </h:link>
+            </div>
+
+
+
+            <div id="linkspanel" class="floating_box">
+                <h:form>
+                    <div id="linkspanel_left">
+                        <h:link class="navigation_link"  value="Home"  outcome="index.xhtml" /> &nbsp;&middot;&nbsp;
+                        <h:link class="navigation_link"  value="Server"  outcome="server.xhtml" /> &nbsp;&middot;&nbsp;
+                        <h:link class="navigation_link"  value="Nodes"  outcome="nodes.xhtml" /> &nbsp;&middot;&nbsp;
+                        <h:link class="navigation_link" value="Segments"  outcome="segments.xhtml" /> &nbsp;&middot;&nbsp;
+                        <h:link class="navigation_link" value="Leases"  outcome="leases.xhtml" /> &nbsp;&middot;&nbsp;
+                        <h:link class="navigation_link" value="Auctions"  outcome="auctions.xhtml" /> &nbsp;&middot;&nbsp;
                         <h:link class="navigation_link" value="Help"  outcome="help.xhtml"/> 
-                    </h:form>
-                </div>
+                    </div>
 
-
-                <div id="userpanel" class="floating_box" style="float: right ;  text-align: left; width: 20%">
-                    <h:form>
-                        <h:outputLabel value="You are logged in as: #{userBean.username}"/>
-                        <h:commandButton value="Logout" action="#{userBean.logout}" style="float: right"/>
-                    </h:form>
-                </div>  
+                    <div id="linkspanel_right">
+                        <h:outputLabel value="You are logged in as: ${userBean.username}"/>
+                        &middot;
+                        <h:commandLink class="navigation_link"  value="Logout" onclick="return confirmLogoutDialog('${userBean.username}');" action="#{userBean.logout}"/>
+                    </div>
+                </h:form>
             </div>
 
-            <div id="contentbox" class="floating_box" style="clear: left; height: 400px">
+
+            <div id="content_box" class="floating_box">
                 <ui:insert name="content">
                     [content goes here]
                 </ui:insert>
             </div>
 
-            <div id="pagefooter" class="floating_box" style="clear: left">
+            <div id="pagefooter" class="floating_box">
                 footer information
             </div>
         </div>
