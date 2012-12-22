@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table (name="BIDS")
+@Table(name = "BIDS")
 @XmlRootElement
 public class Bid implements Serializable {
 
@@ -28,9 +28,58 @@ public class Bid implements Serializable {
     private Long id;
     @OneToOne
     private SecondaryUserNode bidder;
+    /**
+     * Value of this bid (currency)
+     */
     private Double bidValue;
+    /**
+     * Segment for this bid.
+     */
     @OneToOne
     private Segment segment;
+    /**
+     * Allocation for this bid.
+     */
+    @OneToOne
+    private Allocation allocation;
+    @OneToOne
+    private Auction auction;
+
+    /**
+     * Get the value of auction
+     *
+     * @return the value of auction
+     */
+    public Auction getAuction() {
+        return auction;
+    }
+
+    /**
+     * Set the value of auction
+     *
+     * @param auction new value of auction
+     */
+    public void setAuction(Auction auction) {
+        this.auction = auction;
+    }
+
+    /**
+     * Get the value of allocation
+     *
+     * @return the value of allocation
+     */
+    public Allocation getAllocation() {
+        return allocation;
+    }
+
+    /**
+     * Set the value of allocation
+     *
+     * @param allocation new value of allocation
+     */
+    public void setAllocation(Allocation allocation) {
+        this.allocation = allocation;
+    }
 
     /**
      * Get the value of segment

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "SECONDARY_USER_NODE")
+@Table(name = "SECONDARY_USER_NODES")
 @NamedQuery(name = "findAllNodes", query = "SELECT n FROM SecondaryUserNode n")
 @XmlRootElement
 public class SecondaryUserNode implements Serializable {
@@ -27,46 +28,27 @@ public class SecondaryUserNode implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String locationCode;
     private String nodeID;
     private String nodeUserName;
-    private Double longitude;
-    private Double latitude;
+    @OneToOne
+    private GeoLocation location;
 
     /**
-     * Get the value of latitude
+     * Get the value of location
      *
-     * @return the value of latitude
+     * @return the value of location
      */
-    public Double getLatitude() {
-        return latitude;
+    public GeoLocation getLocation() {
+        return location;
     }
 
     /**
-     * Set the value of latitude
+     * Set the value of location
      *
-     * @param latitude new value of latitude
+     * @param location new value of location
      */
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    /**
-     * Get the value of longitude
-     *
-     * @return the value of longitude
-     */
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    /**
-     * Set the value of longitude
-     *
-     * @param longitude new value of longitude
-     */
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setLocation(GeoLocation location) {
+        this.location = location;
     }
 
     /**
@@ -103,24 +85,6 @@ public class SecondaryUserNode implements Serializable {
      */
     public void setNodeID(String nodeID) {
         this.nodeID = nodeID;
-    }
-
-    /**
-     * Get the value of locationCode
-     *
-     * @return the value of locationCode
-     */
-    public String getLocationCode() {
-        return locationCode;
-    }
-
-    /**
-     * Set the value of locationCode
-     *
-     * @param locationCode new value of locationCode
-     */
-    public void setLocationCode(String locationCode) {
-        this.locationCode = locationCode;
     }
 
     public Long getId() {

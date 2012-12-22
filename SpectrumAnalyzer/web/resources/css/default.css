@@ -7,14 +7,13 @@ body
     color: white;
 }
 
+#username_label{
+    font-style: italic
+}
+
 #content_box{
     text-align: center;
     height: 400px;
-}
-
-#top_panel{
-    font-size: 20px;
-    font-family: fantasy
 }
 
 /* A floating, bordered box */
@@ -32,11 +31,19 @@ body
 }
 
 /* Link on left sidebar */
-.navigation_link{
+.navigation_link, .navigation_link_footer{
     font-size: 16px; 
     text-decoration: none;
     font-weight: bold; 
     color: white;
+}
+
+.navigation_link_selected{
+    background-color: white;
+}
+
+#pagefooter, .navigation_link_footer{
+    font-size: 12px; 
 }
 
 #linkspanel{
@@ -56,6 +63,11 @@ body
 #linkspanel_right{
     text-align: right;
 }
+
+a
+{
+    color: white;
+} 
 
 /* Colour of hyperlinks for which the cursor is hovering over */
 a:hover{

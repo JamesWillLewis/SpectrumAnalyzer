@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table (name="SEGMENTS")
+@Table(name = "SEGMENTS")
 @XmlRootElement
 public class Segment implements Serializable {
 
@@ -25,8 +25,37 @@ public class Segment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * Service which this segment may implement (GPRS, 3G, EDGE, WiFI, HDPA,
+     * etc)
+     */
+    private String serviceType;
+    /**
+     * Minimum signal propagation power
+     */
     private Double minPower;
+    /**
+     *  Spectrum width of this segment (in MHz)
+     */
     private Double bandWidth;
+
+    /**
+     * Get the value of serviceType
+     *
+     * @return the value of serviceType
+     */
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    /**
+     * Set the value of serviceType
+     *
+     * @param serviceType new value of serviceType
+     */
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
 
     /**
      * Get the value of bandWidth

@@ -27,13 +27,30 @@ public class Allocation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * Contiguous spectrum band upper frequency bound
+     */
     private Double bandFreqUpper;
+    /**
+     * Contiguous spectrum band lower frequency bound
+     */
     private Double bandFreqLower;
+    /**
+     * Maximum signal propagation power
+     */
     private Double powerConstraint;
+    /**
+     * Primary User (Node) of this allocation
+     */
     @OneToOne
     private PrimaryUserNode primaryUser;
+    /**
+     * Date/time when allocation available for secondary user.
+     */
     private Date beginDate;
-    
+    /**
+     * Date/time when allocation claimed by primary user.
+     */
     private Date endDate;
 
     /**

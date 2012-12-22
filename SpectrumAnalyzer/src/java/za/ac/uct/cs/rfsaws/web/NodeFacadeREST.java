@@ -2,9 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.services;
+package za.ac.uct.cs.rfsaws.web;
 
 import java.util.List;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -60,6 +62,15 @@ public class NodeFacadeREST extends AbstractFacade<SecondaryUserNode> {
     public SecondaryUserNode find(@PathParam("id") Long id) {
         return super.find(id);
     }
+    
+    @GET
+    @Path("/test")
+    @Produces({"application/xml", "application/json"})
+    public String test() {
+        return "<html>test ok</html>";
+    }
+    
+    
 
     @GET
     @Override

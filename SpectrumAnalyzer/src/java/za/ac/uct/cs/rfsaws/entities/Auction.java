@@ -5,23 +5,86 @@
 package za.ac.uct.cs.rfsaws.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author James
  */
 @Entity
-@Table (name="AUCTIONS")
+@Table(name = "AUCTIONS")
+@XmlRootElement
 public class Auction implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @OneToOne
+    private Allocation auctionedSpectrum;
+    private Date auctionStart;
+    private Date auctionEnd;
+
+    /**
+     * Get the value of auctionEnd
+     *
+     * @return the value of auctionEnd
+     */
+    public Date getAuctionEnd() {
+        return auctionEnd;
+    }
+
+    /**
+     * Set the value of auctionEnd
+     *
+     * @param auctionEnd new value of auctionEnd
+     */
+    public void setAuctionEnd(Date auctionEnd) {
+        this.auctionEnd = auctionEnd;
+    }
+
+    /**
+     * Get the value of auctionStart
+     *
+     * @return the value of auctionStart
+     */
+    public Date getAuctionStart() {
+        return auctionStart;
+    }
+
+    /**
+     * Set the value of auctionStart
+     *
+     * @param auctionStart new value of auctionStart
+     */
+    public void setAuctionStart(Date auctionStart) {
+        this.auctionStart = auctionStart;
+    }
+
+    /**
+     * Get the value of auctionedSpectrum
+     *
+     * @return the value of auctionedSpectrum
+     */
+    public Allocation getAuctionedSpectrum() {
+        return auctionedSpectrum;
+    }
+
+    /**
+     * Set the value of auctionedSpectrum
+     *
+     * @param auctionedSpectrum new value of auctionedSpectrum
+     */
+    public void setAuctionedSpectrum(Allocation auctionedSpectrum) {
+        this.auctionedSpectrum = auctionedSpectrum;
+    }
 
     public Long getId() {
         return id;
@@ -55,5 +118,4 @@ public class Auction implements Serializable {
     public String toString() {
         return "za.ac.uct.cs.rfsaws.entities.Auction[ id=" + id + " ]";
     }
-    
 }

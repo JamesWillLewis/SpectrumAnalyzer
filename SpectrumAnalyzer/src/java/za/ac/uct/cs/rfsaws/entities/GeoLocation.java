@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,36 +17,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
-@Table(name = "PRIMARY_USER_NODES")
+@Table(name = "GEOLOCATIONS")
 @XmlRootElement
-public class PrimaryUserNode implements Serializable {
+public class GeoLocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nodeID;
-    private String nodeUserName;
-    @OneToOne
-    private GeoLocation string;
-
     /**
-     * Get the value of string
-     *
-     * @return the value of string
+     * Geographical longitude
      */
-    public GeoLocation getString() {
-        return string;
-    }
-
-    /**
-     * Set the value of string
-     *
-     * @param string new value of string
-     */
-    public void setString(GeoLocation string) {
-        this.string = string;
-    }
+    private Double longitude;
+    private Double latitude;
+    private String locationCode;
 
     public Long getId() {
         return id;
@@ -57,46 +40,58 @@ public class PrimaryUserNode implements Serializable {
         this.id = id;
     }
 
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLocationCode() {
+        return locationCode;
+    }
+
+    public void setLocationCode(String locationCode) {
+        this.locationCode = locationCode;
+    }
+    
+    
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
+    
+    
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PrimaryUserNode)) {
+        if (!(object instanceof GeoLocation)) {
             return false;
         }
-        PrimaryUserNode other = (PrimaryUserNode) object;
+        GeoLocation other = (GeoLocation) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    public String getNodeID() {
-        return nodeID;
-    }
-
-    public void setNodeID(String nodeID) {
-        this.nodeID = nodeID;
-    }
-
-    public String getNodeUserName() {
-        return nodeUserName;
-    }
-
-    public void setNodeUserName(String nodeUserName) {
-        this.nodeUserName = nodeUserName;
-    }
-    
-    
-
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.PrimaryUserNode[ id=" + id + " ]";
+        return "za.ac.uct.cs.rfsaws.entities.GeoLocation[ id=" + id + " ]";
     }
 }

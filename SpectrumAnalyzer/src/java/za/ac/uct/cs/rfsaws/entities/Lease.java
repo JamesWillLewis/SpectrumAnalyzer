@@ -27,14 +27,73 @@ public class Lease implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * Secondary user node who claims this lease.
+     */
     @OneToOne
     private SecondaryUserNode node;
+    /**
+     * Segment for which this lease is allocated.
+     */
     @OneToOne
     private Segment segment;
+    /**
+     * Allocation to which this lease is assigned.
+     */
     @OneToOne
     private Allocation allocation;
+    /**
+     * Start date/time of the lease.
+     */
     private Date dateStart;
+    /**
+     * Expiry date/time of the lease.
+     */
     private Date dateEnd;
+    /**
+     * Allocated upper frequency bound.
+     */
+    private Double bandFreqUpper;
+    /**
+     * Allocated lower frequency bound.
+     */
+    private Double bandFreqLower;
+
+    /**
+     * Get the value of bandFreqLower
+     *
+     * @return the value of bandFreqLower
+     */
+    public Double getBandFreqLower() {
+        return bandFreqLower;
+    }
+
+    /**
+     * Set the value of bandFreqLower
+     *
+     * @param bandFreqLower new value of bandFreqLower
+     */
+    public void setBandFreqLower(Double bandFreqLower) {
+        this.bandFreqLower = bandFreqLower;
+    }
+
+    /**
+     * Get the value of bandFreqUpper
+     *
+     * @return the value of bandFreqUpper
+     */
+    public Double getBandFreqUpper() {
+        return bandFreqUpper;
+    }
+
+    /**
+     * Set the value of bandFreqUpper
+     *
+     * @param bandFreqUpper new value of bandFreqUpper
+     */
+    public void setBandFreqUpper(Double bandFreqUpper) {
+        this.bandFreqUpper = bandFreqUpper;
+    }
 
     /**
      * Get the value of allocation

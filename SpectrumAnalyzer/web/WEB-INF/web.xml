@@ -36,31 +36,27 @@
     <security-constraint>
         <display-name>Client constraint</display-name>
         <web-resource-collection>
-            <web-resource-name>Web services</web-resource-name>
+            <web-resource-name>REST resources</web-resource-name>
             <description/>
             <url-pattern>/webresources/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <description>services</description>
-            <role-name>rfsaws_admin</role-name>
+            <description>Client authorization</description>
             <role-name>rfsaws_client</role-name>
+            <role-name>rfsaws_admin</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
-        <auth-method>FORM</auth-method>
+        <auth-method>BASIC</auth-method>
         <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/faces/login.xhtml</form-login-page>
-            <form-error-page>/faces/error.xhtml</form-error-page>
-        </form-login-config>
     </login-config>
     <security-role>
-        <description>allowed access to server admin console</description>
+        <description>Admin console access</description>
         <role-name>rfsaws_admin</role-name>
     </security-role>
     <security-role>
-        <description>Client
- access privilages</description>
+        <description>REST resourced access
+</description>
         <role-name>rfsaws_client</role-name>
     </security-role>
 </web-app>
