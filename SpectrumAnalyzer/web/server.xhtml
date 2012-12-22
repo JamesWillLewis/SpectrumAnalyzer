@@ -8,10 +8,10 @@
 
         <ui:composition template="./admin-template.xhtml">
 
-            <ui:define name="content">
-                <h:panelGrid columns="3" style="text-align: left" >
+            <ui:define name="content" >
+                <h:panelGrid columns="3" style="text-align: left">
 
-                    <h:outputLabel value="Server:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.info}"/>
+                    <h:outputLabel id="serverLabel" value="Server:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.info}"/>
 
                     <h:outputLabel value="Host:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.hostName}"/>
 

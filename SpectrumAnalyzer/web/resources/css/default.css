@@ -38,10 +38,6 @@ body
     color: white;
 }
 
-.navigation_link_selected{
-    background-color: white;
-}
-
 #pagefooter, .navigation_link_footer{
     font-size: 12px; 
 }

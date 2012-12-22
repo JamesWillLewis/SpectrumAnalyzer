@@ -30,6 +30,26 @@ public class PrimaryUserNode implements Serializable {
     private String nodeUserName;
     @OneToOne
     private GeoLocation string;
+    @OneToOne
+    private GeoLocation Location;
+
+    /**
+     * Get the value of Location
+     *
+     * @return the value of Location
+     */
+    public GeoLocation getLocation() {
+        return Location;
+    }
+
+    /**
+     * Set the value of Location
+     *
+     * @param Location new value of Location
+     */
+    public void setLocation(GeoLocation Location) {
+        this.Location = Location;
+    }
 
     /**
      * Get the value of string
@@ -92,8 +112,6 @@ public class PrimaryUserNode implements Serializable {
     public void setNodeUserName(String nodeUserName) {
         this.nodeUserName = nodeUserName;
     }
-    
-    
 
     @Override
     public String toString() {
