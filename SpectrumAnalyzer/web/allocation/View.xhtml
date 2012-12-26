@@ -19,8 +19,8 @@
                     <h:outputText value="#{allocationController.selected.endDate}" title="#{bundle.ViewAllocationTitle_endDate}"/>
                     <h:outputText value="#{bundle.ViewAllocationLabel_beginDate}"/>
                     <h:outputText value="#{allocationController.selected.beginDate}" title="#{bundle.ViewAllocationTitle_beginDate}"/>
-                    <h:outputText value="#{bundle.ViewAllocationLabel_masterNode}"/>
-                    <h:outputText value="#{allocationController.selected.masterNode}" title="#{bundle.ViewAllocationTitle_masterNode}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_primaryUser}"/>
+                    <h:outputText value="#{allocationController.selected.primaryUser}" title="#{bundle.ViewAllocationTitle_primaryUser}"/>
                     <h:outputText value="#{bundle.ViewAllocationLabel_powerConstraint}"/>
                     <h:outputText value="#{allocationController.selected.powerConstraint}" title="#{bundle.ViewAllocationTitle_powerConstraint}"/>
                     <h:outputText value="#{bundle.ViewAllocationLabel_bandFreqLower}"/>
@@ -40,6 +40,7 @@
                 <br />
                 <h:commandLink action="#{allocationController.prepareList}" value="#{bundle.ViewAllocationShowAllLink}"/>
                 <br />
+    
             </h:form>
         </ui:define>
     </ui:composition>

@@ -19,8 +19,10 @@
                     <h:inputText id="endDate" value="#{allocationController.selected.endDate}" title="#{bundle.CreateAllocationTitle_endDate}" />
                     <h:outputLabel value="#{bundle.CreateAllocationLabel_beginDate}" for="beginDate" />
                     <h:inputText id="beginDate" value="#{allocationController.selected.beginDate}" title="#{bundle.CreateAllocationTitle_beginDate}" />
-                    <h:outputLabel value="#{bundle.CreateAllocationLabel_masterNode}" for="masterNode" />
-                    <h:inputText id="masterNode" value="#{allocationController.selected.masterNode}" title="#{bundle.CreateAllocationTitle_masterNode}" />
+                    <h:outputLabel value="#{bundle.CreateAllocationLabel_primaryUser}" for="primaryUser" />
+                    <h:selectOneMenu id="primaryUser" value="#{allocationController.selected.primaryUser}" title="#{bundle.CreateAllocationTitle_primaryUser}" >
+                        <f:selectItems value="#{primaryUserNodeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateAllocationLabel_powerConstraint}" for="powerConstraint" />
                     <h:inputText id="powerConstraint" value="#{allocationController.selected.powerConstraint}" title="#{bundle.CreateAllocationTitle_powerConstraint}" />
                     <h:outputLabel value="#{bundle.CreateAllocationLabel_bandFreqLower}" for="bandFreqLower" />
@@ -36,6 +38,7 @@
                 <br />
                 <h:commandLink action="#{allocationController.prepareList}" value="#{bundle.CreateAllocationShowAllLink}" immediate="true"/>
                 <br />
+               
             </h:form>
         </ui:define>
     </ui:composition>
