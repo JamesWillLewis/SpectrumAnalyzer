@@ -15,6 +15,8 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAuctionLabel_resolved}" for="resolved" />
+                    <h:inputText id="resolved" value="#{auctionController.selected.resolved}" title="#{bundle.EditAuctionTitle_resolved}" />
                     <h:outputLabel value="#{bundle.EditAuctionLabel_auctionEnd}" for="auctionEnd" />
                     <h:inputText id="auctionEnd" value="#{auctionController.selected.auctionEnd}" title="#{bundle.EditAuctionTitle_auctionEnd}" />
                     <h:outputLabel value="#{bundle.EditAuctionLabel_auctionStart}" for="auctionStart" />
@@ -33,6 +35,7 @@
                 <br />
                 <h:commandLink action="#{auctionController.prepareList}" value="#{bundle.EditAuctionShowAllLink}" immediate="true"/>
                 <br />
+     
             </h:form>
         </ui:define>
     </ui:composition>

@@ -4,6 +4,7 @@
  */
 package za.ac.uct.cs.rfsaws.ejb;
 
+import javax.ejb.Singleton;
 import javax.ejb.Stateful;
 
 /**
@@ -11,7 +12,7 @@ import javax.ejb.Stateful;
  * @author James
  */
 @Stateful
-public class LeaseAllocationBean {
+public class Broker {
 
     
     

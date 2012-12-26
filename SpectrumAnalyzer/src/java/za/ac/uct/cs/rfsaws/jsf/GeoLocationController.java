@@ -1,10 +1,5 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.GeoLocation;
-import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
-import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
-import za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade;
-
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -17,6 +12,10 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade;
+import za.ac.uct.cs.rfsaws.entities.GeoLocation;
+import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
+import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 
 
 @ManagedBean(name="geoLocationController")

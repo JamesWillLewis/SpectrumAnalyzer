@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,6 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "AUCTIONS")
+@NamedQueries({
+    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from Auction A WHERE A.resolved = 0")})
 @XmlRootElement
 public class Auction implements Serializable {
 
@@ -31,6 +35,25 @@ public class Auction implements Serializable {
     private Allocation auctionedSpectrum;
     private Date auctionStart;
     private Date auctionEnd;
+    private byte resolved;
+
+    /**
+     * Get the value of resolved
+     *
+     * @return the value of resolved
+     */
+    public byte getResolved() {
+        return resolved;
+    }
+
+    /**
+     * Set the value of resolved
+     *
+     * @param resolved new value of resolved
+     */
+    public void setResolved(byte resolved) {
+        this.resolved = resolved;
+    }
 
     /**
      * Get the value of auctionEnd
