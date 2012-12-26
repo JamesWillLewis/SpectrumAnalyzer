@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAllocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_endDate}" for="endDate" />
+                    <h:inputText id="endDate" value="#{allocationController.selected.endDate}" title="#{bundle.EditAllocationTitle_endDate}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_beginDate}" for="beginDate" />
+                    <h:inputText id="beginDate" value="#{allocationController.selected.beginDate}" title="#{bundle.EditAllocationTitle_beginDate}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_masterNode}" for="masterNode" />
+                    <h:inputText id="masterNode" value="#{allocationController.selected.masterNode}" title="#{bundle.EditAllocationTitle_masterNode}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_powerConstraint}" for="powerConstraint" />
+                    <h:inputText id="powerConstraint" value="#{allocationController.selected.powerConstraint}" title="#{bundle.EditAllocationTitle_powerConstraint}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_bandFreqLower}" for="bandFreqLower" />
+                    <h:inputText id="bandFreqLower" value="#{allocationController.selected.bandFreqLower}" title="#{bundle.EditAllocationTitle_bandFreqLower}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_bandFreqUpper}" for="bandFreqUpper" />
+                    <h:inputText id="bandFreqUpper" value="#{allocationController.selected.bandFreqUpper}" title="#{bundle.EditAllocationTitle_bandFreqUpper}" />
+                    <h:outputLabel value="#{bundle.EditAllocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{allocationController.selected.id}" title="#{bundle.EditAllocationTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{allocationController.update}" value="#{bundle.EditAllocationSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAllocationViewLink}"/>
+                <br />
+                <h:commandLink action="#{allocationController.prepareList}" value="#{bundle.EditAllocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAllocationIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

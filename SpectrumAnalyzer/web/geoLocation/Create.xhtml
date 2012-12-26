@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGeoLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGeoLocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{geoLocationController.selected.id}" title="#{bundle.CreateGeoLocationTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateGeoLocationLabel_longitude}" for="longitude" />
+                    <h:inputText id="longitude" value="#{geoLocationController.selected.longitude}" title="#{bundle.CreateGeoLocationTitle_longitude}" />
+                    <h:outputLabel value="#{bundle.CreateGeoLocationLabel_latitude}" for="latitude" />
+                    <h:inputText id="latitude" value="#{geoLocationController.selected.latitude}" title="#{bundle.CreateGeoLocationTitle_latitude}" />
+                    <h:outputLabel value="#{bundle.CreateGeoLocationLabel_locationCode}" for="locationCode" />
+                    <h:inputText id="locationCode" value="#{geoLocationController.selected.locationCode}" title="#{bundle.CreateGeoLocationTitle_locationCode}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{geoLocationController.create}" value="#{bundle.CreateGeoLocationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{geoLocationController.prepareList}" value="#{bundle.CreateGeoLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGeoLocationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

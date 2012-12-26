@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAllocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAllocationLabel_endDate}"/>
+                    <h:outputText value="#{allocationController.selected.endDate}" title="#{bundle.ViewAllocationTitle_endDate}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_beginDate}"/>
+                    <h:outputText value="#{allocationController.selected.beginDate}" title="#{bundle.ViewAllocationTitle_beginDate}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_masterNode}"/>
+                    <h:outputText value="#{allocationController.selected.masterNode}" title="#{bundle.ViewAllocationTitle_masterNode}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_powerConstraint}"/>
+                    <h:outputText value="#{allocationController.selected.powerConstraint}" title="#{bundle.ViewAllocationTitle_powerConstraint}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_bandFreqLower}"/>
+                    <h:outputText value="#{allocationController.selected.bandFreqLower}" title="#{bundle.ViewAllocationTitle_bandFreqLower}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_bandFreqUpper}"/>
+                    <h:outputText value="#{allocationController.selected.bandFreqUpper}" title="#{bundle.ViewAllocationTitle_bandFreqUpper}"/>
+                    <h:outputText value="#{bundle.ViewAllocationLabel_id}"/>
+                    <h:outputText value="#{allocationController.selected.id}" title="#{bundle.ViewAllocationTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{allocationController.destroyAndView}" value="#{bundle.ViewAllocationDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAllocationEditLink}"/>
+                <br />
+                <h:commandLink action="#{allocationController.prepareCreate}" value="#{bundle.ViewAllocationCreateLink}" />
+                <br />
+                <h:commandLink action="#{allocationController.prepareList}" value="#{bundle.ViewAllocationShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAllocationIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

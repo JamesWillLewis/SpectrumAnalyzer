@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAllocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAllocationEmpty}" rendered="#{allocationController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{allocationController.items.rowCount > 0}">
+                    <h:outputText value="#{allocationController.pagination.pageFirstItem + 1}..#{allocationController.pagination.pageLastItem + 1}/#{allocationController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{allocationController.previous}" value="#{bundle.Previous} #{allocationController.pagination.pageSize}" rendered="#{allocationController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{allocationController.next}" value="#{bundle.Next} #{allocationController.pagination.pageSize}" rendered="#{allocationController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{allocationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_endDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.endDate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_beginDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.beginDate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_masterNode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.masterNode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_powerConstraint}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.powerConstraint}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_bandFreqLower}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bandFreqLower}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_bandFreqUpper}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bandFreqUpper}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAllocationTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{allocationController.prepareView}" value="#{bundle.ListAllocationViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{allocationController.prepareEdit}" value="#{bundle.ListAllocationEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{allocationController.destroy}" value="#{bundle.ListAllocationDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{allocationController.prepareCreate}" value="#{bundle.ListAllocationCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAllocationIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

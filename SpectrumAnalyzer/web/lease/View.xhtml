@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLeaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLeaseLabel_bandFreqLower}"/>
+                    <h:outputText value="#{leaseController.selected.bandFreqLower}" title="#{bundle.ViewLeaseTitle_bandFreqLower}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_bandFreqUpper}"/>
+                    <h:outputText value="#{leaseController.selected.bandFreqUpper}" title="#{bundle.ViewLeaseTitle_bandFreqUpper}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_allocation}"/>
+                    <h:outputText value="#{leaseController.selected.allocation}" title="#{bundle.ViewLeaseTitle_allocation}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_dateEnd}"/>
+                    <h:outputText value="#{leaseController.selected.dateEnd}" title="#{bundle.ViewLeaseTitle_dateEnd}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_dateStart}"/>
+                    <h:outputText value="#{leaseController.selected.dateStart}" title="#{bundle.ViewLeaseTitle_dateStart}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_string}"/>
+                    <h:outputText value="#{leaseController.selected.string}" title="#{bundle.ViewLeaseTitle_string}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_node}"/>
+                    <h:outputText value="#{leaseController.selected.node}" title="#{bundle.ViewLeaseTitle_node}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_id}"/>
+                    <h:outputText value="#{leaseController.selected.id}" title="#{bundle.ViewLeaseTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{leaseController.destroyAndView}" value="#{bundle.ViewLeaseDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLeaseEditLink}"/>
+                <br />
+                <h:commandLink action="#{leaseController.prepareCreate}" value="#{bundle.ViewLeaseCreateLink}" />
+                <br />
+                <h:commandLink action="#{leaseController.prepareList}" value="#{bundle.ViewLeaseShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLeaseIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

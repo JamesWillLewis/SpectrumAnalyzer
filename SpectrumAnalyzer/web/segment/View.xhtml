@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSegmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSegmentLabel_serviceType}"/>
+                    <h:outputText value="#{segmentController.selected.serviceType}" title="#{bundle.ViewSegmentTitle_serviceType}"/>
+                    <h:outputText value="#{bundle.ViewSegmentLabel_bandWidth}"/>
+                    <h:outputText value="#{segmentController.selected.bandWidth}" title="#{bundle.ViewSegmentTitle_bandWidth}"/>
+                    <h:outputText value="#{bundle.ViewSegmentLabel_minPower}"/>
+                    <h:outputText value="#{segmentController.selected.minPower}" title="#{bundle.ViewSegmentTitle_minPower}"/>
+                    <h:outputText value="#{bundle.ViewSegmentLabel_id}"/>
+                    <h:outputText value="#{segmentController.selected.id}" title="#{bundle.ViewSegmentTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{segmentController.destroyAndView}" value="#{bundle.ViewSegmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSegmentEditLink}"/>
+                <br />
+                <h:commandLink action="#{segmentController.prepareCreate}" value="#{bundle.ViewSegmentCreateLink}" />
+                <br />
+                <h:commandLink action="#{segmentController.prepareList}" value="#{bundle.ViewSegmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSegmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

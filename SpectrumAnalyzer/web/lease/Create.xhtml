@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLeaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_bandFreqLower}" for="bandFreqLower" />
+                    <h:inputText id="bandFreqLower" value="#{leaseController.selected.bandFreqLower}" title="#{bundle.CreateLeaseTitle_bandFreqLower}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_bandFreqUpper}" for="bandFreqUpper" />
+                    <h:inputText id="bandFreqUpper" value="#{leaseController.selected.bandFreqUpper}" title="#{bundle.CreateLeaseTitle_bandFreqUpper}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_allocation}" for="allocation" />
+                    <h:selectOneMenu id="allocation" value="#{leaseController.selected.allocation}" title="#{bundle.CreateLeaseTitle_allocation}" >
+                        <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_dateEnd}" for="dateEnd" />
+                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.CreateLeaseTitle_dateEnd}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_dateStart}" for="dateStart" />
+                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.CreateLeaseTitle_dateStart}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_string}" for="string" />
+                    <h:inputText id="string" value="#{leaseController.selected.string}" title="#{bundle.CreateLeaseTitle_string}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_node}" for="node" />
+                    <h:selectOneMenu id="node" value="#{leaseController.selected.node}" title="#{bundle.CreateLeaseTitle_node}" >
+                        <f:selectItems value="#{secondaryUserNodeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{leaseController.selected.id}" title="#{bundle.CreateLeaseTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{leaseController.create}" value="#{bundle.CreateLeaseSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{leaseController.prepareList}" value="#{bundle.CreateLeaseShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLeaseIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

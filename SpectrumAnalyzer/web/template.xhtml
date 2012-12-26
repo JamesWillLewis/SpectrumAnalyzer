@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+
+        <h:outputScript library="js" name="common.js"/>
+
+    </h:head>
+
+    <h:body >
+
+        <div id="container">
+
+            <div id="banner">
+                <h:link outcome="/index"> <h:graphicImage library="images" name="title_banner.png"/> </h:link>
+            </div>
+
+            <div id="linkspanel" class="floating_box">
+                <div id="linkspanel_left">
+                    <h:link class="navigation_link" value="Home" outcome="/index"/> 
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" value="Server" outcome="/server" /> 
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/allocation/List" value="Allocations"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/auction/List" value="Auctions"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/bid/List" value="Bids"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/geoLocation/List" value="Geo-locations"/>
+                    <br/>
+                    <h:link class="navigation_link" outcome="/lease/List" value="Leases"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/primaryUserNode/List" value="Primary User Nodes"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/secondaryUserNode/List" value="Secondary User Nodes"/>
+                    &nbsp;&middot;&nbsp;
+                    <h:link class="navigation_link" outcome="/segment/List" value="Segments"/>
+                </div>
+
+                <div id="linkspanel_right">
+                    <br/>
+                    <h:outputLabel value="You are logged in as: "/> <span id="username_label"> <h:outputLabel value="${userBean.username}"/> </span>
+                </div>
+            </div>
+
+
+            <div id="content_box" class="floating_box">
+                <ui:insert name="body">Default Body</ui:insert>
+            </div>
+
+            <div id="pagefooter" class="floating_box">
+                Developed by James Lewis (2012) &nbsp;&middot;&nbsp; 
+                <h:outputLink class="navigation_link_footer" value="http://www.uct.ac.za" target="_blank">University of Cape Town</h:outputLink> &nbsp;&middot;&nbsp;
+                <h:outputLink class="navigation_link_footer" value="http://isat.cs.uct.ac.za/" target="_blank"> Intelligent Systems and Advanced Telecommunication (ISAT)</h:outputLink>
+            </div>
+        </div>
+    </h:body>
+</html>

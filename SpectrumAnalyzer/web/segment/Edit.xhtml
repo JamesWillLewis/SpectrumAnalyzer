@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSegmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSegmentLabel_serviceType}" for="serviceType" />
+                    <h:inputText id="serviceType" value="#{segmentController.selected.serviceType}" title="#{bundle.EditSegmentTitle_serviceType}" />
+                    <h:outputLabel value="#{bundle.EditSegmentLabel_bandWidth}" for="bandWidth" />
+                    <h:inputText id="bandWidth" value="#{segmentController.selected.bandWidth}" title="#{bundle.EditSegmentTitle_bandWidth}" />
+                    <h:outputLabel value="#{bundle.EditSegmentLabel_minPower}" for="minPower" />
+                    <h:inputText id="minPower" value="#{segmentController.selected.minPower}" title="#{bundle.EditSegmentTitle_minPower}" />
+                    <h:outputLabel value="#{bundle.EditSegmentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{segmentController.selected.id}" title="#{bundle.EditSegmentTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{segmentController.update}" value="#{bundle.EditSegmentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSegmentViewLink}"/>
+                <br />
+                <h:commandLink action="#{segmentController.prepareList}" value="#{bundle.EditSegmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSegmentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

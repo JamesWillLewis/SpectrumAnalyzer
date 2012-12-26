@@ -12,7 +12,7 @@ body
 }
 
 #content_box{
-    text-align: center;
+    text-align: left;
     height: 400px;
 }
 
@@ -48,7 +48,7 @@ body
 
 /* Link on left sidebar */
 .navigation_link, .navigation_link_footer{
-    font-size: 16px; 
+    font-size: 14px; 
     text-decoration: none;
     font-weight: bold; 
     color: white;
@@ -69,6 +69,7 @@ body
 
 #linkspanel_left{
     text-align: left;
+    
     float: left;
 }
 

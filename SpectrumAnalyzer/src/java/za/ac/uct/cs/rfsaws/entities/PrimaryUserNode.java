@@ -29,7 +29,7 @@ public class PrimaryUserNode implements Serializable {
     private String nodeID;
     private String nodeUserName;
     @OneToOne
-    private GeoLocation Location;
+    private GeoLocation location;
 
     /**
      * Get the value of Location
@@ -37,7 +37,7 @@ public class PrimaryUserNode implements Serializable {
      * @return the value of Location
      */
     public GeoLocation getLocation() {
-        return Location;
+        return location;
     }
 
     /**
@@ -46,7 +46,7 @@ public class PrimaryUserNode implements Serializable {
      * @param Location new value of Location
      */
     public void setLocation(GeoLocation Location) {
-        this.Location = Location;
+        this.location = Location;
     }
 
     public Long getId() {

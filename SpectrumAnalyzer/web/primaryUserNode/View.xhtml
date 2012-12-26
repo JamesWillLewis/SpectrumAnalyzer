@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPrimaryUserNodeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPrimaryUserNodeLabel_location}"/>
+                    <h:outputText value="#{primaryUserNodeController.selected.location}" title="#{bundle.ViewPrimaryUserNodeTitle_location}"/>
+                    <h:outputText value="#{bundle.ViewPrimaryUserNodeLabel_id}"/>
+                    <h:outputText value="#{primaryUserNodeController.selected.id}" title="#{bundle.ViewPrimaryUserNodeTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPrimaryUserNodeLabel_nodeID}"/>
+                    <h:outputText value="#{primaryUserNodeController.selected.nodeID}" title="#{bundle.ViewPrimaryUserNodeTitle_nodeID}"/>
+                    <h:outputText value="#{bundle.ViewPrimaryUserNodeLabel_nodeUserName}"/>
+                    <h:outputText value="#{primaryUserNodeController.selected.nodeUserName}" title="#{bundle.ViewPrimaryUserNodeTitle_nodeUserName}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{primaryUserNodeController.destroyAndView}" value="#{bundle.ViewPrimaryUserNodeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPrimaryUserNodeEditLink}"/>
+                <br />
+                <h:commandLink action="#{primaryUserNodeController.prepareCreate}" value="#{bundle.ViewPrimaryUserNodeCreateLink}" />
+                <br />
+                <h:commandLink action="#{primaryUserNodeController.prepareList}" value="#{bundle.ViewPrimaryUserNodeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPrimaryUserNodeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

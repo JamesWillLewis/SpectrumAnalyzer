@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSecondaryUserNodeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSecondaryUserNodeLabel_location}" for="location" />
+                    <h:selectOneMenu id="location" value="#{secondaryUserNodeController.selected.location}" title="#{bundle.CreateSecondaryUserNodeTitle_location}" >
+                        <f:selectItems value="#{geoLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSecondaryUserNodeLabel_nodeUserName}" for="nodeUserName" />
+                    <h:inputText id="nodeUserName" value="#{secondaryUserNodeController.selected.nodeUserName}" title="#{bundle.CreateSecondaryUserNodeTitle_nodeUserName}" />
+                    <h:outputLabel value="#{bundle.CreateSecondaryUserNodeLabel_nodeID}" for="nodeID" />
+                    <h:inputText id="nodeID" value="#{secondaryUserNodeController.selected.nodeID}" title="#{bundle.CreateSecondaryUserNodeTitle_nodeID}" />
+                    <h:outputLabel value="#{bundle.CreateSecondaryUserNodeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{secondaryUserNodeController.selected.id}" title="#{bundle.CreateSecondaryUserNodeTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{secondaryUserNodeController.create}" value="#{bundle.CreateSecondaryUserNodeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{secondaryUserNodeController.prepareList}" value="#{bundle.CreateSecondaryUserNodeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSecondaryUserNodeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

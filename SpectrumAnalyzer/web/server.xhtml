@@ -6,9 +6,9 @@
 
     <body>
 
-        <ui:composition template="./admin-template.xhtml">
+        <ui:composition template="./template.xhtml">
 
-            <ui:define name="content" >
+            <ui:define name="body" >
                 <h:panelGrid columns="3" style="text-align: left">
 
                     <h:outputLabel id="serverLabel" value="Server:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.info}"/>
