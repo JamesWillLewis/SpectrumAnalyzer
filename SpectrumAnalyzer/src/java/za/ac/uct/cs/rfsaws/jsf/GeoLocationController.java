@@ -18,14 +18,15 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@ManagedBean(name = "geoLocationController")
+
+@ManagedBean(name="geoLocationController")
 @SessionScoped
 public class GeoLocationController implements Serializable {
 
+
     private GeoLocation current;
     private DataModel items = null;
-    @EJB
-    private za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade ejbFacade;
+    @EJB private za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -43,10 +44,10 @@ public class GeoLocationController implements Serializable {
     private GeoLocationFacade getFacade() {
         return ejbFacade;
     }
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
+
                 @Override
                 public int getItemsCount() {
                     return getFacade().count();
@@ -54,7 +55,7 @@ public class GeoLocationController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
                 }
             };
         }
@@ -67,7 +68,7 @@ public class GeoLocationController implements Serializable {
     }
 
     public String prepareView() {
-        current = (GeoLocation) getItems().getRowData();
+        current = (GeoLocation)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -90,7 +91,7 @@ public class GeoLocationController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (GeoLocation) getItems().getRowData();
+        current = (GeoLocation)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +108,7 @@ public class GeoLocationController implements Serializable {
     }
 
     public String destroy() {
-        current = (GeoLocation) getItems().getRowData();
+        current = (GeoLocation)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -141,14 +142,14 @@ public class GeoLocationController implements Serializable {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
+            selectedItemIndex = count-1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
         }
     }
 
@@ -187,14 +188,14 @@ public class GeoLocationController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = GeoLocation.class)
+    @FacesConverter(forClass=GeoLocation.class)
     public static class GeoLocationControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            GeoLocationController controller = (GeoLocationController) facesContext.getApplication().getELResolver().
+            GeoLocationController controller = (GeoLocationController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "geoLocationController");
             return controller.ejbFacade.find(getKey(value));
         }
@@ -219,8 +220,10 @@ public class GeoLocationController implements Serializable {
                 GeoLocation o = (GeoLocation) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + GeoLocation.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+GeoLocation.class.getName());
             }
         }
+
     }
+
 }

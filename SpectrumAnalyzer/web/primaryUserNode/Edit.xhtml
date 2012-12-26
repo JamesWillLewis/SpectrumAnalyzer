@@ -16,7 +16,9 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditPrimaryUserNodeLabel_location}" for="location" />
-                    <h:inputText id="location" value="#{primaryUserNodeController.selected.location}" title="#{bundle.EditPrimaryUserNodeTitle_location}" />
+                    <h:selectOneMenu id="location" value="#{primaryUserNodeController.selected.location}" title="#{bundle.EditPrimaryUserNodeTitle_location}" >
+                        <f:selectItems value="#{geoLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditPrimaryUserNodeLabel_id}" for="id" />
                     <h:inputText id="id" value="#{primaryUserNodeController.selected.id}" title="#{bundle.EditPrimaryUserNodeTitle_id}" />
                     <h:outputLabel value="#{bundle.EditPrimaryUserNodeLabel_nodeID}" for="nodeID" />
@@ -31,8 +33,7 @@
                 <br />
                 <h:commandLink action="#{primaryUserNodeController.prepareList}" value="#{bundle.EditPrimaryUserNodeShowAllLink}" immediate="true"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditPrimaryUserNodeIndexLink}" />
+             
             </h:form>
         </ui:define>
     </ui:composition>
