@@ -92,6 +92,6 @@ public class GeoLocation implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.GeoLocation[ id=" + id + " ]";
+        return "GeoLocation[ id=" + id + " ]";
     }
 }

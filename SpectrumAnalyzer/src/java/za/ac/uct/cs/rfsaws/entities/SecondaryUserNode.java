@@ -32,6 +32,14 @@ public class SecondaryUserNode implements Serializable {
     @OneToOne
     private GeoLocation location;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     /**
      * Get the value of location
      *
@@ -86,14 +94,6 @@ public class SecondaryUserNode implements Serializable {
         this.nodeID = nodeID;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -116,6 +116,6 @@ public class SecondaryUserNode implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Node[ id=" + id + " ]";
+        return "SecondaryUserNode[ id=" + id + " ]";
     }
 }

@@ -89,23 +89,15 @@ public class Allocation implements Serializable {
         this.beginDate = beginDate;
     }
 
-    /**
-     * Get the value of masterNode
-     *
-     * @return the value of masterNode
-     */
-    public PrimaryUserNode getMasterNode() {
+    public PrimaryUserNode getPrimaryUser() {
         return primaryUser;
     }
 
-    /**
-     * Set the value of masterNode
-     *
-     * @param masterNode new value of masterNode
-     */
-    public void setMasterNode(PrimaryUserNode masterNode) {
-        this.primaryUser = masterNode;
+    public void setPrimaryUser(PrimaryUserNode primaryUser) {
+        this.primaryUser = primaryUser;
     }
+
+   
 
     /**
      * Get the value of powerConstraint
@@ -191,6 +183,6 @@ public class Allocation implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Allocation[ id=" + id + " ]";
+        return "Allocation[ id=" + id + " ]";
     }
 }

@@ -95,6 +95,6 @@ public class PrimaryUserNode implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.PrimaryUserNode[ id=" + id + " ]";
+        return "PrimaryUserNode[ id=" + id + " ]";
     }
 }

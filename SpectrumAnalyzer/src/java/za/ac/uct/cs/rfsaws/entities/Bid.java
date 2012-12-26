@@ -165,6 +165,6 @@ public class Bid implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Bid[ id=" + id + " ]";
+        return "Bid[ id=" + id + " ]";
     }
 }

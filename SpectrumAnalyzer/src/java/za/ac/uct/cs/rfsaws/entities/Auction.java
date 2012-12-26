@@ -116,6 +116,6 @@ public class Auction implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Auction[ id=" + id + " ]";
+        return "Auction[ id=" + id + " ]";
     }
 }

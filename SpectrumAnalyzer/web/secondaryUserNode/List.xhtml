@@ -28,9 +28,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSecondaryUserNodeTitle_nodeUserName}"/>
+                                <h:outputText value="#{bundle.ListSecondaryUserNodeTitle_id}"/>
                             </f:facet>
-                            <h:outputText value="#{item.nodeUserName}"/>
+                            <h:outputText value="#{item.id}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -40,10 +40,11 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSecondaryUserNodeTitle_id}"/>
+                                <h:outputText value="#{bundle.ListSecondaryUserNodeTitle_nodeUserName}"/>
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="#{item.nodeUserName}"/>
                         </h:column>
+
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
@@ -59,7 +60,7 @@
                 <br />
                 <h:commandLink action="#{secondaryUserNodeController.prepareCreate}" value="#{bundle.ListSecondaryUserNodeCreateLink}"/>
                 <br />
-               
+
             </h:form>
         </ui:define>
     </ui:composition>

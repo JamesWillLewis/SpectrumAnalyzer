@@ -215,6 +215,6 @@ public class Lease implements Serializable {
 
     @Override
     public String toString() {
-        return "za.ac.uct.cs.rfsaws.entities.Lease[ id=" + id + " ]";
+        return "Lease[ id=" + id + " ]";
     }
 }
