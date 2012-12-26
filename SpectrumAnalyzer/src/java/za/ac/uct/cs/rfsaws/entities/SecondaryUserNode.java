@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "SECONDARY_USER_NODES")
-@NamedQuery(name = "findAllNodes", query = "SELECT n FROM SecondaryUserNode n")
 @XmlRootElement
 public class SecondaryUserNode implements Serializable {
 

@@ -10,38 +10,89 @@
 
             <ui:define name="content">
 
-                <h:dataTable
-                    var="node"
-                    value="#{nodeBean.nodes}"
-                    rules="all"
-                    cellpadding="5">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="ID" />
-                        </f:facet>
-                        <h:form>
-                            <h:outputText value="#{node.id}" /> 
-                        </h:form>
-                    </h:column>
+                <div class="table_div" >
+                    <h:outputLabel class="table_label" value="Primary Nodes" for="primary_node_table"/>
+                    <h:dataTable
+                        var="node"
+                        value="#{nodeBean.primaryNodes}"
+                        rules="all"
+                        cellpadding="5"
+                        id="primary_node_table"
+                        >
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Node ID" />
-                        </f:facet>
-                        <h:form>
-                            <h:outputText value="#{node.nodeID}" />
-                        </h:form>
-                    </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.id}" /> 
+                            </h:form>
+                        </h:column>
 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Location Code" />
-                        </f:facet>
-                        <h:form>
-                            <h:outputText value="#{node.locationCode}" />
-                        </h:form>
-                    </h:column>
-                </h:dataTable>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Node ID" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.nodeID}" />
+                            </h:form>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="User Name" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.nodeUserName}" />
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+
+                </div>
+
+                <div class="table_div_indented">
+                    <h:outputLabel class="table_label" value="Secondary Nodes" for="secondary_node_table"/>
+                    <h:dataTable
+                        var="node"
+                        value="#{nodeBean.secondaryNodes}"
+                        rules="all"
+                        cellpadding="5"
+                        id="secondary_node_table"
+                        >
+
+
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.id}" /> 
+                            </h:form>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Node ID" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.nodeID}" />
+                            </h:form>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="User Name" />
+                            </f:facet>
+                            <h:form>
+                                <h:outputText value="#{node.nodeUserName}" />
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+
+                </div>
+
+
             </ui:define>
 
         </ui:composition>

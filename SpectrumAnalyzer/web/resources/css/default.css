@@ -30,6 +30,22 @@ body
     padding: 0px 10px;
 }
 
+.table_label{
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    height: 50px;
+}
+
+.table_div, .table_div_indented{
+    text-align: center; 
+    float: left;
+}
+
+.table_div_indented{
+    margin-left: 50px;
+}
+
 /* Link on left sidebar */
 .navigation_link, .navigation_link_footer{
     font-size: 16px; 

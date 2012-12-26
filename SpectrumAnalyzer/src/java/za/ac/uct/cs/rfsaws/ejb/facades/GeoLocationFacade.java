@@ -2,19 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.ejb;
+package za.ac.uct.cs.rfsaws.ejb.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.PrimaryUserNode;
+import za.ac.uct.cs.rfsaws.entities.GeoLocation;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class PrimaryUserNodeFacade extends AbstractFacade<PrimaryUserNode> {
+public class GeoLocationFacade extends AbstractFacade<GeoLocation> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class PrimaryUserNodeFacade extends AbstractFacade<PrimaryUserNode> {
         return em;
     }
 
-    public PrimaryUserNodeFacade() {
-        super(PrimaryUserNode.class);
+    public GeoLocationFacade() {
+        super(GeoLocation.class);
     }
     
 }

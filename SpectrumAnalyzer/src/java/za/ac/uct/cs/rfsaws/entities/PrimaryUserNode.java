@@ -29,8 +29,6 @@ public class PrimaryUserNode implements Serializable {
     private String nodeID;
     private String nodeUserName;
     @OneToOne
-    private GeoLocation string;
-    @OneToOne
     private GeoLocation Location;
 
     /**
@@ -49,24 +47,6 @@ public class PrimaryUserNode implements Serializable {
      */
     public void setLocation(GeoLocation Location) {
         this.Location = Location;
-    }
-
-    /**
-     * Get the value of string
-     *
-     * @return the value of string
-     */
-    public GeoLocation getString() {
-        return string;
-    }
-
-    /**
-     * Set the value of string
-     *
-     * @param string new value of string
-     */
-    public void setString(GeoLocation string) {
-        this.string = string;
     }
 
     public Long getId() {

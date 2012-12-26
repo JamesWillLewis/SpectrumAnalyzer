@@ -2,19 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.ejb;
+package za.ac.uct.cs.rfsaws.ejb.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.Segment;
+import za.ac.uct.cs.rfsaws.entities.Allocation;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class SegmentFacade extends AbstractFacade<Segment> {
+public class AllocationFacade extends AbstractFacade<Allocation> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class SegmentFacade extends AbstractFacade<Segment> {
         return em;
     }
 
-    public SegmentFacade() {
-        super(Segment.class);
+    public AllocationFacade() {
+        super(Allocation.class);
     }
     
 }

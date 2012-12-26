@@ -2,19 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.ejb;
+package za.ac.uct.cs.rfsaws.ejb.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.Lease;
+import za.ac.uct.cs.rfsaws.entities.Bid;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class LeaseFacade extends AbstractFacade<Lease> {
+public class BidFacade extends AbstractFacade<Bid> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class LeaseFacade extends AbstractFacade<Lease> {
         return em;
     }
 
-    public LeaseFacade() {
-        super(Lease.class);
+    public BidFacade() {
+        super(Bid.class);
     }
     
 }
