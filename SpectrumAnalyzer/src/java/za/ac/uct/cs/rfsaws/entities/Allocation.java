@@ -5,16 +5,13 @@
 package za.ac.uct.cs.rfsaws.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -50,18 +47,18 @@ public class Allocation implements Serializable {
     /**
      * Date/time when allocation available for secondary user.
      */
-    private Timestamp beginDate;
+    private Date beginDate;
     /**
      * Date/time when allocation claimed by primary user.
      */
-    private Timestamp endDate;
+    private Date endDate;
 
     /**
      * Get the value of endDate
      *
      * @return the value of endDate
      */
-    public Timestamp getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
@@ -70,7 +67,7 @@ public class Allocation implements Serializable {
      *
      * @param endDate new value of endDate
      */
-    public void setEndDate(Timestamp endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -79,7 +76,7 @@ public class Allocation implements Serializable {
      *
      * @return the value of beginDate
      */
-    public Timestamp getBeginDate() {
+    public Date getBeginDate() {
         return beginDate;
     }
 
@@ -88,7 +85,7 @@ public class Allocation implements Serializable {
      *
      * @param beginDate new value of beginDate
      */
-    public void setBeginDate(Timestamp beginDate) {
+    public void setBeginDate(Date beginDate) {
         this.beginDate = beginDate;
     }
 
