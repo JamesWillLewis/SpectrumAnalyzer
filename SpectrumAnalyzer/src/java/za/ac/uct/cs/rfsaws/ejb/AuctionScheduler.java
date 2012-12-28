@@ -33,6 +33,8 @@ public class AuctionScheduler {
     }
     
     private void resolve(List<Auction> auctions){
-        //TODO use allocation controller
+        for(Auction a: auctions){
+            System.out.println(a);
+        }
     }
 }

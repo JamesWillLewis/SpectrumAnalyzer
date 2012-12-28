@@ -5,7 +5,7 @@
 package za.ac.uct.cs.rfsaws.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +14,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -23,7 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "AUCTIONS")
 @NamedQueries({
-    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from Auction A WHERE A.resolved = 0")})
+    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from Auction A WHERE A.resolved = 0"
+    + " AND A.auctionEnd >= CURRENT_TIMESTAMP")})
 @XmlRootElement
 public class Auction implements Serializable {
 
@@ -33,7 +36,9 @@ public class Auction implements Serializable {
     private Long id;
     @OneToOne
     private Allocation auctionedSpectrum;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date auctionStart;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date auctionEnd;
     private byte resolved;
 
