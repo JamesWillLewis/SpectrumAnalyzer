@@ -24,9 +24,13 @@
                         <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_dateEnd}" for="dateEnd" />
-                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.CreateLeaseTitle_dateEnd}" />
+                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.CreateLeaseTitle_dateEnd}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_dateStart}" for="dateStart" />
-                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.CreateLeaseTitle_dateStart}" />
+                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.CreateLeaseTitle_dateStart}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_string}" for="string" />
                     <h:inputText id="string" value="#{leaseController.selected.string}" title="#{bundle.CreateLeaseTitle_string}" />
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_node}" for="node" />

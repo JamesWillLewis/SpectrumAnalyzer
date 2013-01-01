@@ -18,9 +18,13 @@
                     <h:outputLabel value="#{bundle.EditAuctionLabel_resolved}" for="resolved" />
                     <h:inputText id="resolved" value="#{auctionController.selected.resolved}" title="#{bundle.EditAuctionTitle_resolved}" />
                     <h:outputLabel value="#{bundle.EditAuctionLabel_auctionEnd}" for="auctionEnd" />
-                    <h:inputText id="auctionEnd" value="#{auctionController.selected.auctionEnd}" title="#{bundle.EditAuctionTitle_auctionEnd}" />
+                    <h:inputText id="auctionEnd" value="#{auctionController.selected.auctionEnd}" title="#{bundle.EditAuctionTitle_auctionEnd}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.EditAuctionLabel_auctionStart}" for="auctionStart" />
-                    <h:inputText id="auctionStart" value="#{auctionController.selected.auctionStart}" title="#{bundle.EditAuctionTitle_auctionStart}" />
+                    <h:inputText id="auctionStart" value="#{auctionController.selected.auctionStart}" title="#{bundle.EditAuctionTitle_auctionStart}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.EditAuctionLabel_auctionedSpectrum}" for="auctionedSpectrum" />
                     <h:selectOneMenu id="auctionedSpectrum" value="#{auctionController.selected.auctionedSpectrum}" title="#{bundle.EditAuctionTitle_auctionedSpectrum}" >
                         <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
@@ -35,7 +39,7 @@
                 <br />
                 <h:commandLink action="#{auctionController.prepareList}" value="#{bundle.EditAuctionShowAllLink}" immediate="true"/>
                 <br />
-     
+
             </h:form>
         </ui:define>
     </ui:composition>

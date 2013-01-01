@@ -30,13 +30,17 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAuctionTitle_auctionEnd}"/>
                             </f:facet>
-                            <h:outputText value="#{item.auctionEnd}"/>
+                            <h:outputText value="#{item.auctionEnd}">
+                                <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAuctionTitle_auctionStart}"/>
                             </f:facet>
-                            <h:outputText value="#{item.auctionStart}"/>
+                            <h:outputText value="#{item.auctionStart}">
+                                <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

@@ -16,9 +16,9 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewAllocationLabel_endDate}"/>
-                    <h:outputText value="#{allocationController.selected.endDate}" title="#{bundle.ViewAllocationTitle_endDate}"/>
+                    <h:outputText value="#{allocationController.selected.endDate}" title="#{bundle.ViewAllocationTitle_endDate}"> <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:outputText>
                     <h:outputText value="#{bundle.ViewAllocationLabel_beginDate}"/>
-                    <h:outputText value="#{allocationController.selected.beginDate}" title="#{bundle.ViewAllocationTitle_beginDate}"/>
+                    <h:outputText value="#{allocationController.selected.beginDate}" title="#{bundle.ViewAllocationTitle_beginDate}"> <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:outputText>
                     <h:outputText value="#{bundle.ViewAllocationLabel_primaryUser}"/>
                     <h:outputText value="#{allocationController.selected.primaryUser}" title="#{bundle.ViewAllocationTitle_primaryUser}"/>
                     <h:outputText value="#{bundle.ViewAllocationLabel_powerConstraint}"/>

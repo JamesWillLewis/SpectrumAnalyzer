@@ -24,9 +24,13 @@
                         <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditLeaseLabel_dateEnd}" for="dateEnd" />
-                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.EditLeaseTitle_dateEnd}" />
+                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.EditLeaseTitle_dateEnd}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.EditLeaseLabel_dateStart}" for="dateStart" />
-                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.EditLeaseTitle_dateStart}" />
+                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.EditLeaseTitle_dateStart}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:inputText>
                     <h:outputLabel value="#{bundle.EditLeaseLabel_string}" for="string" />
                     <h:inputText id="string" value="#{leaseController.selected.string}" title="#{bundle.EditLeaseTitle_string}" />
                     <h:outputLabel value="#{bundle.EditLeaseLabel_node}" for="node" />
@@ -43,7 +47,7 @@
                 <br />
                 <h:commandLink action="#{leaseController.prepareList}" value="#{bundle.EditLeaseShowAllLink}" immediate="true"/>
                 <br />
-                
+
             </h:form>
         </ui:define>
     </ui:composition>

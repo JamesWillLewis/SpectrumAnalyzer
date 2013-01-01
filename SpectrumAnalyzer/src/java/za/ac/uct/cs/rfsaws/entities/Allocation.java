@@ -5,13 +5,15 @@
 package za.ac.uct.cs.rfsaws.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -47,10 +49,12 @@ public class Allocation implements Serializable {
     /**
      * Date/time when allocation available for secondary user.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     private Date beginDate;
     /**
      * Date/time when allocation claimed by primary user.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
 
     /**

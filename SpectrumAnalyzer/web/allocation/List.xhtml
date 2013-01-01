@@ -22,15 +22,15 @@
                     <h:dataTable value="#{allocationController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAllocationTitle_endDate}"/>
+                                <h:outputText value="#{bundle.ListAllocationTitle_endDate}"/> 
                             </f:facet>
-                            <h:outputText value="#{item.endDate}"/>
+                            <h:outputText value="#{item.endDate}"> <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAllocationTitle_beginDate}"/>
                             </f:facet>
-                            <h:outputText value="#{item.beginDate}"/>
+                            <h:outputText value="#{item.beginDate}"> <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

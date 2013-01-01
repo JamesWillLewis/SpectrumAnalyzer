@@ -18,9 +18,13 @@
                     <h:outputText value="#{bundle.ViewAuctionLabel_resolved}"/>
                     <h:outputText value="#{auctionController.selected.resolved}" title="#{bundle.ViewAuctionTitle_resolved}"/>
                     <h:outputText value="#{bundle.ViewAuctionLabel_auctionEnd}"/>
-                    <h:outputText value="#{auctionController.selected.auctionEnd}" title="#{bundle.ViewAuctionTitle_auctionEnd}"/>
+                    <h:outputText value="#{auctionController.selected.auctionEnd}" title="#{bundle.ViewAuctionTitle_auctionEnd}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:outputText>
                     <h:outputText value="#{bundle.ViewAuctionLabel_auctionStart}"/>
-                    <h:outputText value="#{auctionController.selected.auctionStart}" title="#{bundle.ViewAuctionTitle_auctionStart}"/>
+                    <h:outputText value="#{auctionController.selected.auctionStart}" title="#{bundle.ViewAuctionTitle_auctionStart}">
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
+                    </h:outputText>
                     <h:outputText value="#{bundle.ViewAuctionLabel_auctionedSpectrum}"/>
                     <h:outputText value="#{auctionController.selected.auctionedSpectrum}" title="#{bundle.ViewAuctionTitle_auctionedSpectrum}"/>
                     <h:outputText value="#{bundle.ViewAuctionLabel_id}"/>
@@ -36,7 +40,7 @@
                 <br />
                 <h:commandLink action="#{auctionController.prepareList}" value="#{bundle.ViewAuctionShowAllLink}"/>
                 <br />
-  
+
             </h:form>
         </ui:define>
     </ui:composition>

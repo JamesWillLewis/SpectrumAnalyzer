@@ -5,13 +5,15 @@
 package za.ac.uct.cs.rfsaws.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -45,10 +47,12 @@ public class Lease implements Serializable {
     /**
      * Start date/time of the lease.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateStart;
     /**
      * Expiry date/time of the lease.
      */
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateEnd;
     /**
      * Allocated upper frequency bound.

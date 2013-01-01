@@ -16,9 +16,11 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditAllocationLabel_endDate}" for="endDate" />
-                    <h:inputText id="endDate" value="#{allocationController.selected.endDate}" title="#{bundle.EditAllocationTitle_endDate}" />
+                    <h:inputText id="endDate" value="#{allocationController.selected.endDate}" title="#{bundle.EditAllocationTitle_endDate}"  >
+                        <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:inputText>
                     <h:outputLabel value="#{bundle.EditAllocationLabel_beginDate}" for="beginDate" />
-                    <h:inputText id="beginDate" value="#{allocationController.selected.beginDate}" title="#{bundle.EditAllocationTitle_beginDate}" />
+                    <h:inputText id="beginDate" value="#{allocationController.selected.beginDate}" title="#{bundle.EditAllocationTitle_beginDate}">
+                       <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/> </h:inputText>
                     <h:outputLabel value="#{bundle.EditAllocationLabel_primaryUser}" for="primaryUser" />
                     <h:selectOneMenu id="primaryUser" value="#{allocationController.selected.primaryUser}" title="#{bundle.EditAllocationTitle_primaryUser}" >
                         <f:selectItems value="#{primaryUserNodeController.itemsAvailableSelectOne}"/>
@@ -39,7 +41,7 @@
                 <br />
                 <h:commandLink action="#{allocationController.prepareList}" value="#{bundle.EditAllocationShowAllLink}" immediate="true"/>
                 <br />
-  
+
             </h:form>
         </ui:define>
     </ui:composition>
