@@ -29,8 +29,8 @@
                     <h:outputText value="#{leaseController.selected.dateStart}" title="#{bundle.ViewLeaseTitle_dateStart}">
                         <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
                     </h:outputText>
-                    <h:outputText value="#{bundle.ViewLeaseLabel_string}"/>
-                    <h:outputText value="#{leaseController.selected.string}" title="#{bundle.ViewLeaseTitle_string}"/>
+                    <h:outputText value="#{bundle.ViewLeaseLabel_segment}"/>
+                    <h:outputText value="#{leaseController.selected.segment}" title="#{bundle.ViewLeaseTitle_segment}"/>
                     <h:outputText value="#{bundle.ViewLeaseLabel_node}"/>
                     <h:outputText value="#{leaseController.selected.node}" title="#{bundle.ViewLeaseTitle_node}"/>
                     <h:outputText value="#{bundle.ViewLeaseLabel_id}"/>
@@ -46,7 +46,6 @@
                 <br />
                 <h:commandLink action="#{leaseController.prepareList}" value="#{bundle.ViewLeaseShowAllLink}"/>
                 <br />
-
             </h:form>
         </ui:define>
     </ui:composition>

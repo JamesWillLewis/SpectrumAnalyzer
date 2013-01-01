@@ -15,6 +15,7 @@ import za.ac.uct.cs.rfsaws.entities.Auction;
  */
 @Stateless
 public class AuctionFacade extends AbstractFacade<Auction> {
+    
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 

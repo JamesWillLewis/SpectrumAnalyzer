@@ -158,7 +158,7 @@ public class Lease implements Serializable {
      *
      * @return the value of string
      */
-    public Segment getString() {
+    public Segment getSegment() {
         return segment;
     }
 
@@ -167,8 +167,8 @@ public class Lease implements Serializable {
      *
      * @param string new value of string
      */
-    public void setString(Segment string) {
-        this.segment = string;
+    public void setSegment(Segment segment) {
+        this.segment = segment;
     }
 
     /**

@@ -24,15 +24,17 @@
                         <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_dateEnd}" for="dateEnd" />
-                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.CreateLeaseTitle_dateEnd}">
+                    <h:inputText id="dateEnd" value="#{leaseController.selected.dateEnd}" title="#{bundle.CreateLeaseTitle_dateEnd}" >
                         <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
                     </h:inputText>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_dateStart}" for="dateStart" />
-                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.CreateLeaseTitle_dateStart}">
+                    <h:inputText id="dateStart" value="#{leaseController.selected.dateStart}" title="#{bundle.CreateLeaseTitle_dateStart}" >
                         <f:convertDateTime type="both" dateStyle="short" timeStyle="long" timeZone="CAT" locale="ZA"/>
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.CreateLeaseLabel_string}" for="string" />
-                    <h:inputText id="string" value="#{leaseController.selected.string}" title="#{bundle.CreateLeaseTitle_string}" />
+                    <h:outputLabel value="#{bundle.CreateLeaseLabel_segment}" for="segment" />
+                    <h:selectOneMenu id="segment" value="#{leaseController.selected.segment}" title="#{bundle.CreateLeaseTitle_segment}" >
+                        <f:selectItems value="#{segmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.CreateLeaseLabel_node}" for="node" />
                     <h:selectOneMenu id="node" value="#{leaseController.selected.node}" title="#{bundle.CreateLeaseTitle_node}" >
                         <f:selectItems value="#{secondaryUserNodeController.itemsAvailableSelectOne}"/>
@@ -46,7 +48,6 @@
                 <br />
                 <h:commandLink action="#{leaseController.prepareList}" value="#{bundle.CreateLeaseShowAllLink}" immediate="true"/>
                 <br />
-
             </h:form>
         </ui:define>
     </ui:composition>

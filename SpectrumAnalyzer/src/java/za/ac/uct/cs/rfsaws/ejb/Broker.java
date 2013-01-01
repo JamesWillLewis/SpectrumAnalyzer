@@ -4,8 +4,8 @@
  */
 package za.ac.uct.cs.rfsaws.ejb;
 
-import javax.ejb.Singleton;
 import javax.ejb.Stateful;
+import za.ac.uct.cs.rfsaws.entities.Auction;
 
 /**
  *
@@ -13,6 +13,9 @@ import javax.ejb.Stateful;
  */
 @Stateful
 public class Broker {
+
+    public void resolveAuction(Auction auction) {
+    }
 
     
     

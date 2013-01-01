@@ -56,9 +56,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListLeaseTitle_string}"/>
+                                <h:outputText value="#{bundle.ListLeaseTitle_segment}"/>
                             </f:facet>
-                            <h:outputText value="#{item.string}"/>
+                            <h:outputText value="#{item.segment}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -87,7 +87,6 @@
                 <br />
                 <h:commandLink action="#{leaseController.prepareCreate}" value="#{bundle.ListLeaseCreateLink}"/>
                 <br />
-
             </h:form>
         </ui:define>
     </ui:composition>

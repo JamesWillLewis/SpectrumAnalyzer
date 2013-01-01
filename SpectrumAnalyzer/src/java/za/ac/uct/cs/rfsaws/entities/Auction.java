@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "AUCTIONS")
 @NamedQueries({
     @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from Auction A WHERE A.resolved = 0"
-    + " AND A.auctionEnd >= CURRENT_TIMESTAMP")})
+    + " AND A.auctionEnd <= CURRENT_TIMESTAMP")})
 @XmlRootElement
 public class Auction implements Serializable {
 
