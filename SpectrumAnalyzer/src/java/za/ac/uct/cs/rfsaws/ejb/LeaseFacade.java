@@ -15,6 +15,7 @@ import za.ac.uct.cs.rfsaws.entities.Lease;
  */
 @Stateless
 public class LeaseFacade extends AbstractFacade<Lease> {
+
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -26,5 +27,4 @@ public class LeaseFacade extends AbstractFacade<Lease> {
     public LeaseFacade() {
         super(Lease.class);
     }
-    
 }

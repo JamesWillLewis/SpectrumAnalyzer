@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,13 +23,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "BIDS")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "findBidsOfAuction", query = "SELECT b FROM Bid b WHERE b.auction = :a")})
 public class Bid implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    
+    @ManyToOne
     private SecondaryUserNode bidder;
     /**
      * Value of this bid (currency)
@@ -35,14 +41,15 @@ public class Bid implements Serializable {
     /**
      * Segment for this bid.
      */
-    @OneToOne
+    @ManyToOne
     private Segment segment;
     /**
      * Allocation for this bid.
      */
-    @OneToOne
+    @ManyToOne
     private Allocation allocation;
-    @OneToOne
+    
+    @ManyToOne
     private Auction auction;
 
     /**

@@ -15,6 +15,7 @@ import za.ac.uct.cs.rfsaws.entities.Allocation;
  */
 @Stateless
 public class AllocationFacade extends AbstractFacade<Allocation> {
+    
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
