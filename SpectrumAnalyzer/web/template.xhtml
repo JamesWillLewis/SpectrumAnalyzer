@@ -5,25 +5,30 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <h:head>
+        <!-- Meta info -->
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-        <h:outputStylesheet library="css" name="default.css"/>
-        <h:outputStylesheet library="css" name="jsfcrud.css"/>
-
         <title><ui:insert name="title">Default Title</ui:insert></title>
 
+        <!-- Favicon goes here -->
+        <link rel="icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+        
+        <!-- Java-script file declaration-->
         <h:outputScript library="js" name="common.js"/>
 
+        <!-- CSS Style-sheets declarations-->
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
     </h:head>
 
     <h:body >
 
         <div id="container">
-
+            <!-- Page header banner-->
             <div id="banner">
                 <h:link outcome="/index"> <h:graphicImage library="images" name="title_banner.png"/> </h:link>
             </div>
 
+            <!-- Header panel with links -->
             <div id="linkspanel" class="floating_box">
                 <div id="linkspanel_left">
                     <h:link class="navigation_link" value="Home" outcome="/index"/> 
@@ -47,17 +52,19 @@
                     <h:link class="navigation_link" outcome="/segment/List" value="Segments"/>
                 </div>
 
+                <!-- User name panel -->
                 <div id="linkspanel_right">
                     <br/>
                     <h:outputLabel value="You are logged in as: "/> <span id="username_label"> <h:outputLabel value="${userBean.username}"/> </span>
                 </div>
             </div>
 
-
+            <!-- Content inserted here -->
             <div id="content_box" class="floating_box">
                 <ui:insert name="body">Default Body</ui:insert>
             </div>
 
+            <!-- Page footer with links and info-->
             <div id="pagefooter" class="floating_box">
                 Developed by James Lewis (2012) &nbsp;&middot;&nbsp; 
                 <h:outputLink class="navigation_link_footer" value="http://www.uct.ac.za" target="_blank">University of Cape Town</h:outputLink> &nbsp;&middot;&nbsp;
