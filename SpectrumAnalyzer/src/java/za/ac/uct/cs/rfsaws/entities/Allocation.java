@@ -101,8 +101,6 @@ public class Allocation implements Serializable {
         this.primaryUser = primaryUser;
     }
 
-   
-
     /**
      * Get the value of powerConstraint
      *
@@ -187,6 +185,6 @@ public class Allocation implements Serializable {
 
     @Override
     public String toString() {
-        return "Allocation[ id=" + id + " ]";
+        return "Allocation[ id=" + id + " size=" + (bandFreqUpper - bandFreqLower) + " ]";
     }
 }

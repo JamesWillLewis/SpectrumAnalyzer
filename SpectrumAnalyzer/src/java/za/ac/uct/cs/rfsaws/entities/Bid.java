@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,7 +30,6 @@ public class Bid implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     @ManyToOne
     private SecondaryUserNode bidder;
     /**
@@ -43,12 +41,7 @@ public class Bid implements Serializable {
      */
     @ManyToOne
     private Segment segment;
-    /**
-     * Allocation for this bid.
-     */
-    @ManyToOne
-    private Allocation allocation;
-    
+
     @ManyToOne
     private Auction auction;
 
@@ -70,23 +63,6 @@ public class Bid implements Serializable {
         this.auction = auction;
     }
 
-    /**
-     * Get the value of allocation
-     *
-     * @return the value of allocation
-     */
-    public Allocation getAllocation() {
-        return allocation;
-    }
-
-    /**
-     * Set the value of allocation
-     *
-     * @param allocation new value of allocation
-     */
-    public void setAllocation(Allocation allocation) {
-        this.allocation = allocation;
-    }
 
     /**
      * Get the value of segment

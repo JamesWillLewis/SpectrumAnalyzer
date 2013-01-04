@@ -49,7 +49,7 @@ public class KnapsackAlgorithmTest {
 
         List<Bid> bids = new LinkedList<Bid>();
         
-       for(int i = 0; i < 200; i++){
+       for(int i = 0; i < 4; i++){
            Bid b = new Bid();
            b.setBidValue((double)(int)(Math.random()*10+2));
            Segment s = new Segment();
@@ -58,8 +58,8 @@ public class KnapsackAlgorithmTest {
            bids.add(b);
        }
 
-        double W = 2000;
-        KnapsackAlgorithm instance = new KnapsackAlgorithm(bids, W);
+        double W = 500;
+        KnapsackAlgorithm instance = new KnapsackAlgorithm(bids, W,1);
         //double expResult = 90.0;
         List<Bid> result = instance.bestFirstBranchAndBound();
         for(Bid b: result){

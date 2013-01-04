@@ -35,7 +35,7 @@ public class Auction implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    private Allocation auctionedSpectrum;
+    private Allocation allocation;
     @Temporal(TemporalType.TIMESTAMP)
     private Date auctionStart;
     @Temporal(TemporalType.TIMESTAMP)
@@ -101,8 +101,8 @@ public class Auction implements Serializable {
      *
      * @return the value of auctionedSpectrum
      */
-    public Allocation getAuctionedSpectrum() {
-        return auctionedSpectrum;
+    public Allocation getAllocation() {
+        return allocation;
     }
 
     /**
@@ -110,8 +110,8 @@ public class Auction implements Serializable {
      *
      * @param auctionedSpectrum new value of auctionedSpectrum
      */
-    public void setAuctionedSpectrum(Allocation auctionedSpectrum) {
-        this.auctionedSpectrum = auctionedSpectrum;
+    public void setAllocation(Allocation allocation) {
+        this.allocation = allocation;
     }
 
     public Long getId() {

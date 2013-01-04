@@ -123,6 +123,6 @@ public class Segment implements Serializable {
 
     @Override
     public String toString() {
-        return "Segment[ id=" + id + " ]";
+        return "Segment[ id=" + id + " size="+bandWidth+" ]";
     }
 }

@@ -19,10 +19,6 @@
                     <h:selectOneMenu id="auction" value="#{bidController.selected.auction}" title="#{bundle.EditBidTitle_auction}" >
                         <f:selectItems value="#{auctionController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
-                    <h:outputLabel value="#{bundle.EditBidLabel_allocation}" for="allocation" />
-                    <h:selectOneMenu id="allocation" value="#{bidController.selected.allocation}" title="#{bundle.EditBidTitle_allocation}" >
-                        <f:selectItems value="#{allocationController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
                     <h:outputLabel value="#{bundle.EditBidLabel_segment}" for="segment" />
                     <h:selectOneMenu id="segment" value="#{bidController.selected.segment}" title="#{bundle.EditBidTitle_segment}" >
                         <f:selectItems value="#{segmentController.itemsAvailableSelectOne}"/>

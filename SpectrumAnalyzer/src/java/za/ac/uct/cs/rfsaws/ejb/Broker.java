@@ -7,9 +7,7 @@ package za.ac.uct.cs.rfsaws.ejb;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
-import javax.ejb.Singleton;
 import javax.ejb.Stateless;
-import javax.ejb.Timer;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entities.Auction;
@@ -33,8 +31,7 @@ public class Broker {
 
     @Schedule(minute = "*", second = "*/5", dayOfMonth = "*", month = "*", year = "*", hour = "*", dayOfWeek = "*")
     public void myTimer() {
-        System.out.println("Checking for unresolved auctions...");
-       
+        System.out.println("====[Checking for unresolved auctions]====");
         resolve(findUnresolvedAuctions());
     }
 
@@ -43,8 +40,9 @@ public class Broker {
     }
 
     private void resolve(List<Auction> auctions) {
+        System.out.println("====[" + auctions.size() + " unresolved auctions found]====");
         for (Auction a : auctions) {
-            System.out.println("Resolving auction ID=" + a.getId());
+            System.out.println("====[Resolving auction ID=" + a.getId()+"]====");
             
             List<Lease> leases = allocationBean.allocate(a);
        
