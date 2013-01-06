@@ -13,7 +13,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade;
-import za.ac.uct.cs.rfsaws.entities.GeoLocation;
+import za.ac.uct.cs.rfsaws.entities.GeoLocationEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 
@@ -23,7 +23,7 @@ import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 public class GeoLocationController implements Serializable {
 
 
-    private GeoLocation current;
+    private GeoLocationEntity current;
     private DataModel items = null;
     @EJB private za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade ejbFacade;
     private PaginationHelper pagination;
@@ -32,9 +32,9 @@ public class GeoLocationController implements Serializable {
     public GeoLocationController() {
     }
 
-    public GeoLocation getSelected() {
+    public GeoLocationEntity getSelected() {
         if (current == null) {
-            current = new GeoLocation();
+            current = new GeoLocationEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class GeoLocationController implements Serializable {
     }
 
     public String prepareView() {
-        current = (GeoLocation)getItems().getRowData();
+        current = (GeoLocationEntity)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new GeoLocation();
+        current = new GeoLocationEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class GeoLocationController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (GeoLocation)getItems().getRowData();
+        current = (GeoLocationEntity)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class GeoLocationController implements Serializable {
     }
 
     public String destroy() {
-        current = (GeoLocation)getItems().getRowData();
+        current = (GeoLocationEntity)getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class GeoLocationController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass=GeoLocation.class)
+    @FacesConverter(forClass=GeoLocationEntity.class)
     public static class GeoLocationControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class GeoLocationController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof GeoLocation) {
-                GeoLocation o = (GeoLocation) object;
+            if (object instanceof GeoLocationEntity) {
+                GeoLocationEntity o = (GeoLocationEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+GeoLocation.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+GeoLocationEntity.class.getName());
             }
         }
 

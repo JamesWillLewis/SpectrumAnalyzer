@@ -19,12 +19,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "SEGMENTS")
 @XmlRootElement
-public class Segment implements Serializable {
+public class SegmentEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public SegmentEntity() {
+    }
+    
+    
+    
     /**
      * Service which this segment may implement (GPRS, 3G, EDGE, WiFI, HDPA,
      * etc)
@@ -111,10 +117,10 @@ public class Segment implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Segment)) {
+        if (!(object instanceof SegmentEntity)) {
             return false;
         }
-        Segment other = (Segment) object;
+        SegmentEntity other = (SegmentEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

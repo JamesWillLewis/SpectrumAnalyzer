@@ -1,4 +1,4 @@
-package za.ac.uct.cs.rfsaws.web.json;
+package za.ac.uct.cs.rfsaws.rest.beans;
 
 import java.util.Date;
 import javax.xml.bind.annotation.XmlElement;
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @XmlRootElement(name="AUCTION")
-public class AuctionJSON {
+public class AuctionBean {
     
     @XmlElement(name="alloc")
     public Long allocationID;
@@ -18,7 +18,7 @@ public class AuctionJSON {
     @XmlElement(name="end")
     public Date endDate;
 
-    public AuctionJSON() {
+    public AuctionBean() {
         allocationID = 1l;
         startDate = new Date();
         endDate = new Date();

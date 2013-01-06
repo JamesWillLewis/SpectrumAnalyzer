@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.Lease;
+import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.LeaseFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class LeaseController implements Serializable {
 
-    private Lease current;
+    private LeaseEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.LeaseFacade ejbFacade;
@@ -32,9 +32,9 @@ public class LeaseController implements Serializable {
     public LeaseController() {
     }
 
-    public Lease getSelected() {
+    public LeaseEntity getSelected() {
         if (current == null) {
-            current = new Lease();
+            current = new LeaseEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class LeaseController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Lease) getItems().getRowData();
+        current = (LeaseEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Lease();
+        current = new LeaseEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class LeaseController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Lease) getItems().getRowData();
+        current = (LeaseEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class LeaseController implements Serializable {
     }
 
     public String destroy() {
-        current = (Lease) getItems().getRowData();
+        current = (LeaseEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class LeaseController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Lease.class)
+    @FacesConverter(forClass = LeaseEntity.class)
     public static class LeaseControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class LeaseController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Lease) {
-                Lease o = (Lease) object;
+            if (object instanceof LeaseEntity) {
+                LeaseEntity o = (LeaseEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Lease.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + LeaseEntity.class.getName());
             }
         }
     }

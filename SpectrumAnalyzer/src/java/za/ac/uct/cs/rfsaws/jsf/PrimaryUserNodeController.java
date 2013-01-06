@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.PrimaryUserNode;
+import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class PrimaryUserNodeController implements Serializable {
 
-    private PrimaryUserNode current;
+    private PrimaryUserNodeEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade ejbFacade;
@@ -32,9 +32,9 @@ public class PrimaryUserNodeController implements Serializable {
     public PrimaryUserNodeController() {
     }
 
-    public PrimaryUserNode getSelected() {
+    public PrimaryUserNodeEntity getSelected() {
         if (current == null) {
-            current = new PrimaryUserNode();
+            current = new PrimaryUserNodeEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class PrimaryUserNodeController implements Serializable {
     }
 
     public String prepareView() {
-        current = (PrimaryUserNode) getItems().getRowData();
+        current = (PrimaryUserNodeEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new PrimaryUserNode();
+        current = new PrimaryUserNodeEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class PrimaryUserNodeController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (PrimaryUserNode) getItems().getRowData();
+        current = (PrimaryUserNodeEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class PrimaryUserNodeController implements Serializable {
     }
 
     public String destroy() {
-        current = (PrimaryUserNode) getItems().getRowData();
+        current = (PrimaryUserNodeEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class PrimaryUserNodeController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = PrimaryUserNode.class)
+    @FacesConverter(forClass = PrimaryUserNodeEntity.class)
     public static class PrimaryUserNodeControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class PrimaryUserNodeController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof PrimaryUserNode) {
-                PrimaryUserNode o = (PrimaryUserNode) object;
+            if (object instanceof PrimaryUserNodeEntity) {
+                PrimaryUserNodeEntity o = (PrimaryUserNodeEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + PrimaryUserNode.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + PrimaryUserNodeEntity.class.getName());
             }
         }
     }

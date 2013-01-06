@@ -20,6 +20,9 @@ public class ServerBean {
     private String info;
     private String hostName;
     private int port;
+    
+    private boolean resolveAuctions;
+    private Long resolveDelayMS;
 
     /**
      * Creates a new instance of ServerBean

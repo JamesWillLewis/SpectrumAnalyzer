@@ -7,14 +7,14 @@ package za.ac.uct.cs.rfsaws.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.Bid;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class BidFacade extends AbstractFacade<Bid> {
+public class BidFacade extends AbstractFacade<BidEntity> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -24,7 +24,7 @@ public class BidFacade extends AbstractFacade<Bid> {
     }
 
     public BidFacade() {
-        super(Bid.class);
+        super(BidEntity.class);
     }
     
 }

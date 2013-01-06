@@ -8,30 +8,35 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.auction.KnapsackAlgorithm;
-import za.ac.uct.cs.rfsaws.entities.Auction;
-import za.ac.uct.cs.rfsaws.entities.Bid;
-import za.ac.uct.cs.rfsaws.entities.Lease;
+import za.ac.uct.cs.rfsaws.util.KnapsackAlgorithm;
+import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
+import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
 
 /**
  *
  * @author James
  */
-@Stateful
+@Stateless
 public class SpectrumAllocationBean {
 
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
+    
+    @EJB 
+    private LeaseFacade leaseFacade;
 
-    public List<Lease> allocate(Auction a) {
-        List<Bid> bids = em.createNamedQuery("findBidsOfAuction").setParameter("a", a).getResultList();
+    private List<LeaseEntity> allocate(AuctionEntity a) {
+        List<BidEntity> bids = em.createNamedQuery("findBidsOfAuction").setParameter("a", a).getResultList();
         System.out.println("====[" + bids.size() + " bids found for auction id=" + a.getId() + "]====");
         double capacity = a.getAllocation().getBandFreqUpper() - a.getAllocation().getBandFreqLower();
 
-        List<Bid> winningBids = new LinkedList<Bid>();
+        List<BidEntity> winningBids = new LinkedList<BidEntity>();
         if (bids.size() > 0) {
             KnapsackAlgorithm knapsackAlgorithm = new KnapsackAlgorithm(bids, capacity, a.getId());
             winningBids = knapsackAlgorithm.bestFirstBranchAndBound();
@@ -43,13 +48,13 @@ public class SpectrumAllocationBean {
         em.persist(a);
         System.out.println("====[Auction id=" + a.getId() + " has been resolved]====");
 
-        List<Lease> leases = new LinkedList<Lease>();
+        List<LeaseEntity> leases = new LinkedList<LeaseEntity>();
         double spectrumLowerBound = a.getAllocation().getBandFreqLower();
 
         Collections.shuffle(bids);
 
-        for (Bid b : winningBids) {
-            Lease l = new Lease();
+        for (BidEntity b : winningBids) {
+            LeaseEntity l = new LeaseEntity();
             l.setAllocation(a.getAllocation());
             l.setBandFreqLower(spectrumLowerBound);
             spectrumLowerBound += b.getSegment().getBandWidth();
@@ -63,5 +68,35 @@ public class SpectrumAllocationBean {
         System.out.println("====[" + leases.size() + " new leases allocated]====");
 
         return leases;
+    }
+    
+    public void checkAuctions(){
+        resolve(findUnresolvedAuctions());
+    }
+    
+    
+    /**
+     * Search for all unresolved Auctions - any auction which has expired
+     * (passed it's end time) and hasn't been allocated.
+     *
+     * @return List of unresolved Auctions.
+     */
+    private List<AuctionEntity> findUnresolvedAuctions() {
+        return em.createNamedQuery("findUnresolvedAuctions").getResultList();
+    }
+
+    private void resolve(List<AuctionEntity> auctions) {
+        System.out.println("====[" + auctions.size() + " unresolved auctions found]====");
+        for (AuctionEntity a : auctions) {
+            System.out.println("====[Resolving auction ID=" + a.getId() + "]====");
+
+            List<LeaseEntity> leases = allocate(a);
+
+            if (leases != null) {
+                for (LeaseEntity l : leases) {
+                    leaseFacade.create(l);
+                }
+            }
+        }
     }
 }

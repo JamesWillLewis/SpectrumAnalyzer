@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.Segment;
+import za.ac.uct.cs.rfsaws.entities.SegmentEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.SegmentFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class SegmentController implements Serializable {
 
-    private Segment current;
+    private SegmentEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.SegmentFacade ejbFacade;
@@ -32,9 +32,9 @@ public class SegmentController implements Serializable {
     public SegmentController() {
     }
 
-    public Segment getSelected() {
+    public SegmentEntity getSelected() {
         if (current == null) {
-            current = new Segment();
+            current = new SegmentEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class SegmentController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Segment) getItems().getRowData();
+        current = (SegmentEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Segment();
+        current = new SegmentEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class SegmentController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Segment) getItems().getRowData();
+        current = (SegmentEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class SegmentController implements Serializable {
     }
 
     public String destroy() {
-        current = (Segment) getItems().getRowData();
+        current = (SegmentEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class SegmentController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Segment.class)
+    @FacesConverter(forClass = SegmentEntity.class)
     public static class SegmentControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class SegmentController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Segment) {
-                Segment o = (Segment) object;
+            if (object instanceof SegmentEntity) {
+                SegmentEntity o = (SegmentEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Segment.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + SegmentEntity.class.getName());
             }
         }
     }

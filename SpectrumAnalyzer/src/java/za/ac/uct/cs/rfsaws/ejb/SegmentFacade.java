@@ -7,14 +7,14 @@ package za.ac.uct.cs.rfsaws.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.Segment;
+import za.ac.uct.cs.rfsaws.entities.SegmentEntity;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class SegmentFacade extends AbstractFacade<Segment> {
+public class SegmentFacade extends AbstractFacade<SegmentEntity> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -24,7 +24,7 @@ public class SegmentFacade extends AbstractFacade<Segment> {
     }
 
     public SegmentFacade() {
-        super(Segment.class);
+        super(SegmentEntity.class);
     }
     
 }

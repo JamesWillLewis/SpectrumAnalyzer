@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.Bid;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.BidFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class BidController implements Serializable {
 
-    private Bid current;
+    private BidEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.BidFacade ejbFacade;
@@ -32,9 +32,9 @@ public class BidController implements Serializable {
     public BidController() {
     }
 
-    public Bid getSelected() {
+    public BidEntity getSelected() {
         if (current == null) {
-            current = new Bid();
+            current = new BidEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class BidController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Bid) getItems().getRowData();
+        current = (BidEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Bid();
+        current = new BidEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class BidController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Bid) getItems().getRowData();
+        current = (BidEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class BidController implements Serializable {
     }
 
     public String destroy() {
-        current = (Bid) getItems().getRowData();
+        current = (BidEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class BidController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Bid.class)
+    @FacesConverter(forClass = BidEntity.class)
     public static class BidControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class BidController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Bid) {
-                Bid o = (Bid) object;
+            if (object instanceof BidEntity) {
+                BidEntity o = (BidEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Bid.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + BidEntity.class.getName());
             }
         }
     }

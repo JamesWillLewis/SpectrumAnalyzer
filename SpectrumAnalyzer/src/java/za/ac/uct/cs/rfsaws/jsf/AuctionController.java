@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.Auction;
+import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class AuctionController implements Serializable {
 
-    private Auction current;
+    private AuctionEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.AuctionFacade ejbFacade;
@@ -32,9 +32,9 @@ public class AuctionController implements Serializable {
     public AuctionController() {
     }
 
-    public Auction getSelected() {
+    public AuctionEntity getSelected() {
         if (current == null) {
-            current = new Auction();
+            current = new AuctionEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class AuctionController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Auction) getItems().getRowData();
+        current = (AuctionEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Auction();
+        current = new AuctionEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class AuctionController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Auction) getItems().getRowData();
+        current = (AuctionEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class AuctionController implements Serializable {
     }
 
     public String destroy() {
-        current = (Auction) getItems().getRowData();
+        current = (AuctionEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class AuctionController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Auction.class)
+    @FacesConverter(forClass = AuctionEntity.class)
     public static class AuctionControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class AuctionController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Auction) {
-                Auction o = (Auction) object;
+            if (object instanceof AuctionEntity) {
+                AuctionEntity o = (AuctionEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Auction.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + AuctionEntity.class.getName());
             }
         }
     }

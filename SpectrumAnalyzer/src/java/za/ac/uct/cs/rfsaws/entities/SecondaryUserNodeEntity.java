@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "SECONDARY_USER_NODES")
 @XmlRootElement
-public class SecondaryUserNode implements Serializable {
+public class SecondaryUserNodeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -30,7 +30,12 @@ public class SecondaryUserNode implements Serializable {
     private String nodeID;
     private String nodeUserName;
     @OneToOne
-    private GeoLocation location;
+    private GeoLocationEntity location;
+
+    public SecondaryUserNodeEntity() {
+    }
+    
+    
 
     public Long getId() {
         return id;
@@ -45,7 +50,7 @@ public class SecondaryUserNode implements Serializable {
      *
      * @return the value of location
      */
-    public GeoLocation getLocation() {
+    public GeoLocationEntity getLocation() {
         return location;
     }
 
@@ -54,7 +59,7 @@ public class SecondaryUserNode implements Serializable {
      *
      * @param location new value of location
      */
-    public void setLocation(GeoLocation location) {
+    public void setLocation(GeoLocationEntity location) {
         this.location = location;
     }
 
@@ -104,10 +109,10 @@ public class SecondaryUserNode implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SecondaryUserNode)) {
+        if (!(object instanceof SecondaryUserNodeEntity)) {
             return false;
         }
-        SecondaryUserNode other = (SecondaryUserNode) object;
+        SecondaryUserNodeEntity other = (SecondaryUserNodeEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

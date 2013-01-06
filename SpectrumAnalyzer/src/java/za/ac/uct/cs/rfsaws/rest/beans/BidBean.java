@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.web.json;
+package za.ac.uct.cs.rfsaws.rest.beans;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -11,6 +11,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @XmlRootElement
-public class AllocationJSON {
+public class BidBean {
+    
+    public double value;
+    public Long auctionID;
+ 
     
 }

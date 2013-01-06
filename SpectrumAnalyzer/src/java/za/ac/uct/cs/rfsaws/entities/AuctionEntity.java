@@ -25,22 +25,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "AUCTIONS")
 @NamedQueries({
-    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from Auction A WHERE A.resolved = 0"
+    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from AuctionEntity A WHERE A.resolved = 0"
     + " AND A.auctionEnd <= CURRENT_TIMESTAMP")})
 @XmlRootElement
-public class Auction implements Serializable {
+public class AuctionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne
-    private Allocation allocation;
+    private AllocationEntity allocation;
     @Temporal(TemporalType.TIMESTAMP)
     private Date auctionStart;
     @Temporal(TemporalType.TIMESTAMP)
     private Date auctionEnd;
     private byte resolved;
+
+    public AuctionEntity() {
+    }
+    
+    
 
     /**
      * Get the value of resolved
@@ -101,7 +106,7 @@ public class Auction implements Serializable {
      *
      * @return the value of auctionedSpectrum
      */
-    public Allocation getAllocation() {
+    public AllocationEntity getAllocation() {
         return allocation;
     }
 
@@ -110,7 +115,7 @@ public class Auction implements Serializable {
      *
      * @param auctionedSpectrum new value of auctionedSpectrum
      */
-    public void setAllocation(Allocation allocation) {
+    public void setAllocation(AllocationEntity allocation) {
         this.allocation = allocation;
     }
 
@@ -132,10 +137,10 @@ public class Auction implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Auction)) {
+        if (!(object instanceof AuctionEntity)) {
             return false;
         }
-        Auction other = (Auction) object;
+        AuctionEntity other = (AuctionEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

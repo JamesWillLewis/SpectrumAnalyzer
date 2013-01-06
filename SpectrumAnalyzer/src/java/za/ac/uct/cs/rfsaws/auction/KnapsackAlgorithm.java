@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package za.ac.uct.cs.rfsaws.auction;
+package za.ac.uct.cs.rfsaws.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +7,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
-import za.ac.uct.cs.rfsaws.entities.Bid;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
 
 /**
  * Highly optimized and tuned implementation of the Branch-and-Bound algorithm
@@ -25,12 +21,31 @@ import za.ac.uct.cs.rfsaws.entities.Bid;
  */
 public class KnapsackAlgorithm {
 
+    /**
+     * Total number of weights(bids) to allocate.
+     */
     private int numWeights;
+    /**
+     * Total weight (allocation spectrum width)
+     */
     private double capacity;
+    /**
+     * Elements (bids) being allocated.
+     */
     private Node[] elements;
+    /**
+     * Auction which is being resolved.
+     */
     private long auctionID;
 
-    public KnapsackAlgorithm(List<Bid> bids, double capacity, long auctionID) {
+    /**
+     * Initialize knapsack algorithm fields and wrap bids as nodes.
+     *
+     * @param bids Bids to allocate.
+     * @param capacity Maximum weight.
+     * @param auctionID Auction for this allocation.
+     */
+    public KnapsackAlgorithm(List<BidEntity> bids, double capacity, long auctionID) {
         if (bids.size() < 1) {
             throw new RuntimeException("List of bids for auction id=[" + auctionID + "] has 0 items.");
         } else {
@@ -52,16 +67,47 @@ public class KnapsackAlgorithm {
         }
     }
 
+    /**
+     * Node used for performing branch-and-bound
+     * best-first search. The search tree is constructed of Nodes.
+     * Each node maintains various numeric values, as well as 
+     * wrapping it's BidEntity representation, and a list of ancestor (selected nodes).
+     */
     public class Node implements Comparable<Node> {
 
+        /**
+         * Node depth.
+         */
         int level;
+        /**
+         * Monetary value of node.
+         */
         double value;
+        /**
+         * Spectrum (segment) width of node.
+         */
         double weight;
+        /**
+         * Upper bound value.
+         */
         double bound;
+        /**
+         * Ancestor (selected) nodes.
+         */
         List<Node> items;
-        Bid bidRef;
+        /**
+         * Wrapped BidEntity for future reference when allocating
+         * winning bids.
+         */
+        BidEntity bidRef;
+        /**
+         * Ratio = value/weight
+         */
         double ratio;
 
+        /**
+         * Initialize Node with default values.
+         */
         private Node() {
             this.level = 0;
             this.value = 0.0;
@@ -82,6 +128,9 @@ public class KnapsackAlgorithm {
         }
     }
 
+    /**
+     * For purpose of sorting elements in ratio order (value/weight).
+     */
     private class WeightValueRatioComparator implements Comparator<Node> {
 
         @Override
@@ -96,6 +145,9 @@ public class KnapsackAlgorithm {
         }
     }
 
+    /**
+     * Sort Nodes in non-increasing order of ratio (value/weight).
+     */
     private void sortInRatioOrder() {
         List<Node> sortElements = Arrays.asList(elements);
         Collections.sort(sortElements, new WeightValueRatioComparator());
@@ -103,7 +155,13 @@ public class KnapsackAlgorithm {
         elements = (Node[]) sortElements.toArray();
     }
 
-    public List<Bid> bestFirstBranchAndBound() {
+    /**
+     * Perform best-first-search branch-and-bound algorithm
+     * to solve knapsack problem for the assigned elements.
+     * 
+     * @return List of bids which one a segment of the allocation.
+     */
+    public List<BidEntity> bestFirstBranchAndBound() {
         if (elements.length < 1) {
             throw new RuntimeException("List of bids for auction id=[" + auctionID + "] has 0 items.");
         } else {
@@ -183,12 +241,13 @@ public class KnapsackAlgorithm {
                     }
                 }
             }
-
-            List<Bid> winningBids = new LinkedList<Bid>();
+            //bids which one a segment in the allocation
+            List<BidEntity> winningBids = new LinkedList<BidEntity>();
             for (Node n : bestItems) {
                 winningBids.add(n.bidRef);
             }
 
+            //print statistics
             System.out.println("Auction [id=" + auctionID + "] computation complete...");
             System.out.println("Capacity            :   " + capacity + " MHz");
             System.out.println("Total value         :   " + "$" + maxValue);

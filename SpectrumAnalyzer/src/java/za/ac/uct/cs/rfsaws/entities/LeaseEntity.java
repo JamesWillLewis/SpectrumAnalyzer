@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "LEASES")
 @XmlRootElement
-public class Lease implements Serializable {
+public class LeaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,17 +33,17 @@ public class Lease implements Serializable {
      * Secondary user node who claims this lease.
      */
     @OneToOne
-    private SecondaryUserNode node;
+    private SecondaryUserNodeEntity node;
     /**
-     * Segment for which this lease is allocated.
+     * SegmentEntity for which this lease is allocated.
      */
     @OneToOne
-    private Segment segment;
+    private SegmentEntity segment;
     /**
      * Allocation to which this lease is assigned.
      */
     @OneToOne
-    private Allocation allocation;
+    private AllocationEntity allocation;
     /**
      * Start date/time of the lease.
      */
@@ -62,6 +62,11 @@ public class Lease implements Serializable {
      * Allocated lower frequency bound.
      */
     private Double bandFreqLower;
+
+    public LeaseEntity() {
+    }
+    
+    
 
     /**
      * Get the value of bandFreqLower
@@ -104,7 +109,7 @@ public class Lease implements Serializable {
      *
      * @return the value of allocation
      */
-    public Allocation getAllocation() {
+    public AllocationEntity getAllocation() {
         return allocation;
     }
 
@@ -113,7 +118,7 @@ public class Lease implements Serializable {
      *
      * @param allocation new value of allocation
      */
-    public void setAllocation(Allocation allocation) {
+    public void setAllocation(AllocationEntity allocation) {
         this.allocation = allocation;
     }
 
@@ -158,7 +163,7 @@ public class Lease implements Serializable {
      *
      * @return the value of string
      */
-    public Segment getSegment() {
+    public SegmentEntity getSegment() {
         return segment;
     }
 
@@ -167,7 +172,7 @@ public class Lease implements Serializable {
      *
      * @param string new value of string
      */
-    public void setSegment(Segment segment) {
+    public void setSegment(SegmentEntity segment) {
         this.segment = segment;
     }
 
@@ -176,7 +181,7 @@ public class Lease implements Serializable {
      *
      * @return the value of node
      */
-    public SecondaryUserNode getNode() {
+    public SecondaryUserNodeEntity getNode() {
         return node;
     }
 
@@ -185,7 +190,7 @@ public class Lease implements Serializable {
      *
      * @param node new value of node
      */
-    public void setNode(SecondaryUserNode node) {
+    public void setNode(SecondaryUserNodeEntity node) {
         this.node = node;
     }
 
@@ -207,10 +212,10 @@ public class Lease implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Lease)) {
+        if (!(object instanceof LeaseEntity)) {
             return false;
         }
-        Lease other = (Lease) object;
+        LeaseEntity other = (LeaseEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

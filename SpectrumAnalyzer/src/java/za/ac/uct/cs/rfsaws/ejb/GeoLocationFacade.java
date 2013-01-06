@@ -7,14 +7,14 @@ package za.ac.uct.cs.rfsaws.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.GeoLocation;
+import za.ac.uct.cs.rfsaws.entities.GeoLocationEntity;
 
 /**
  *
  * @author James
  */
 @Stateless
-public class GeoLocationFacade extends AbstractFacade<GeoLocation> {
+public class GeoLocationFacade extends AbstractFacade<GeoLocationEntity> {
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -24,7 +24,7 @@ public class GeoLocationFacade extends AbstractFacade<GeoLocation> {
     }
 
     public GeoLocationFacade() {
-        super(GeoLocation.class);
+        super(GeoLocationEntity.class);
     }
     
 }

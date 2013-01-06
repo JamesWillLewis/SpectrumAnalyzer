@@ -23,34 +23,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "BIDS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "findBidsOfAuction", query = "SELECT b FROM Bid b WHERE b.auction = :a")})
-public class Bid implements Serializable {
+    @NamedQuery(name = "findBidsOfAuction", query = "SELECT b FROM BidEntity b WHERE b.auction = :a")})
+public class BidEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    private SecondaryUserNode bidder;
+    private SecondaryUserNodeEntity bidder;
     /**
      * Value of this bid (currency)
      */
     private Double bidValue;
     /**
-     * Segment for this bid.
+     * SegmentEntity for this bid.
      */
     @ManyToOne
-    private Segment segment;
+    private SegmentEntity segment;
 
     @ManyToOne
-    private Auction auction;
+    private AuctionEntity auction;
+
+    public BidEntity() {
+    }
+    
+    
 
     /**
      * Get the value of auction
      *
      * @return the value of auction
      */
-    public Auction getAuction() {
+    public AuctionEntity getAuction() {
         return auction;
     }
 
@@ -59,7 +64,7 @@ public class Bid implements Serializable {
      *
      * @param auction new value of auction
      */
-    public void setAuction(Auction auction) {
+    public void setAuction(AuctionEntity auction) {
         this.auction = auction;
     }
 
@@ -69,7 +74,7 @@ public class Bid implements Serializable {
      *
      * @return the value of segment
      */
-    public Segment getSegment() {
+    public SegmentEntity getSegment() {
         return segment;
     }
 
@@ -78,7 +83,7 @@ public class Bid implements Serializable {
      *
      * @param segment new value of segment
      */
-    public void setSegment(Segment segment) {
+    public void setSegment(SegmentEntity segment) {
         this.segment = segment;
     }
 
@@ -105,7 +110,7 @@ public class Bid implements Serializable {
      *
      * @return the value of bidder
      */
-    public SecondaryUserNode getBidder() {
+    public SecondaryUserNodeEntity getBidder() {
         return bidder;
     }
 
@@ -114,7 +119,7 @@ public class Bid implements Serializable {
      *
      * @param bidder new value of bidder
      */
-    public void setBidder(SecondaryUserNode bidder) {
+    public void setBidder(SecondaryUserNodeEntity bidder) {
         this.bidder = bidder;
     }
 
@@ -136,10 +141,10 @@ public class Bid implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bid)) {
+        if (!(object instanceof BidEntity)) {
             return false;
         }
-        Bid other = (Bid) object;
+        BidEntity other = (BidEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

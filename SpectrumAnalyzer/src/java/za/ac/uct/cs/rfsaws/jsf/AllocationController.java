@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.Allocation;
+import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.AllocationFacade;
@@ -22,7 +22,7 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class AllocationController implements Serializable {
 
-    private Allocation current;
+    private AllocationEntity current;
     private DataModel items = null;
     @EJB
     private za.ac.uct.cs.rfsaws.ejb.AllocationFacade ejbFacade;
@@ -32,9 +32,9 @@ public class AllocationController implements Serializable {
     public AllocationController() {
     }
 
-    public Allocation getSelected() {
+    public AllocationEntity getSelected() {
         if (current == null) {
-            current = new Allocation();
+            current = new AllocationEntity();
             selectedItemIndex = -1;
         }
         return current;
@@ -67,13 +67,13 @@ public class AllocationController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Allocation) getItems().getRowData();
+        current = (AllocationEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Allocation();
+        current = new AllocationEntity();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -90,7 +90,7 @@ public class AllocationController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Allocation) getItems().getRowData();
+        current = (AllocationEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -107,7 +107,7 @@ public class AllocationController implements Serializable {
     }
 
     public String destroy() {
-        current = (Allocation) getItems().getRowData();
+        current = (AllocationEntity) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -187,7 +187,7 @@ public class AllocationController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Allocation.class)
+    @FacesConverter(forClass = AllocationEntity.class)
     public static class AllocationControllerConverter implements Converter {
 
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
@@ -215,11 +215,11 @@ public class AllocationController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Allocation) {
-                Allocation o = (Allocation) object;
+            if (object instanceof AllocationEntity) {
+                AllocationEntity o = (AllocationEntity) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Allocation.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + AllocationEntity.class.getName());
             }
         }
     }

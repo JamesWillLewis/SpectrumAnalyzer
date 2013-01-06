@@ -4,6 +4,7 @@
  */
 package za.ac.uct.cs.rfsaws.auction;
 
+import za.ac.uct.cs.rfsaws.util.KnapsackAlgorithm;
 import java.util.LinkedList;
 import java.util.List;
 import org.junit.After;
@@ -11,8 +12,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import za.ac.uct.cs.rfsaws.entities.Bid;
-import za.ac.uct.cs.rfsaws.entities.Segment;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
+import za.ac.uct.cs.rfsaws.entities.SegmentEntity;
 
 /**
  *
@@ -47,12 +48,12 @@ public class KnapsackAlgorithmTest {
         System.out.println("bestFirstBranchAndBound");
 
 
-        List<Bid> bids = new LinkedList<Bid>();
+        List<BidEntity> bids = new LinkedList<BidEntity>();
         
        for(int i = 0; i < 4; i++){
-           Bid b = new Bid();
+           BidEntity b = new BidEntity();
            b.setBidValue((double)(int)(Math.random()*10+2));
-           Segment s = new Segment();
+           SegmentEntity s = new SegmentEntity();
            s.setBandWidth((double)(int)(Math.random()*10+2));
            b.setSegment(s);
            bids.add(b);
@@ -61,8 +62,8 @@ public class KnapsackAlgorithmTest {
         double W = 500;
         KnapsackAlgorithm instance = new KnapsackAlgorithm(bids, W,1);
         //double expResult = 90.0;
-        List<Bid> result = instance.bestFirstBranchAndBound();
-        for(Bid b: result){
+        List<BidEntity> result = instance.bestFirstBranchAndBound();
+        for(BidEntity b: result){
             System.out.println("V: " + b.getBidValue() + " W: " + b.getSegment().getBandWidth());
         }
  

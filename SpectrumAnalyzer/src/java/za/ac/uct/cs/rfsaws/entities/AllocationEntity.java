@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "ALLOCATIONS")
 @XmlRootElement
-public class Allocation implements Serializable {
+public class AllocationEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,7 +45,7 @@ public class Allocation implements Serializable {
      * Primary User (Node) of this allocation
      */
     @OneToOne
-    private PrimaryUserNode primaryUser;
+    private PrimaryUserNodeEntity primaryUser;
     /**
      * Date/time when allocation available for secondary user.
      */
@@ -56,6 +56,11 @@ public class Allocation implements Serializable {
      */
     @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
+
+    public AllocationEntity() {
+    }
+    
+    
 
     /**
      * Get the value of endDate
@@ -93,11 +98,11 @@ public class Allocation implements Serializable {
         this.beginDate = beginDate;
     }
 
-    public PrimaryUserNode getPrimaryUser() {
+    public PrimaryUserNodeEntity getPrimaryUser() {
         return primaryUser;
     }
 
-    public void setPrimaryUser(PrimaryUserNode primaryUser) {
+    public void setPrimaryUser(PrimaryUserNodeEntity primaryUser) {
         this.primaryUser = primaryUser;
     }
 
@@ -173,10 +178,10 @@ public class Allocation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Allocation)) {
+        if (!(object instanceof AllocationEntity)) {
             return false;
         }
-        Allocation other = (Allocation) object;
+        AllocationEntity other = (AllocationEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

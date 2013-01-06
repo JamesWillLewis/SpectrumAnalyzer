@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "GEOLOCATIONS")
 @XmlRootElement
-public class GeoLocation implements Serializable {
+public class GeoLocationEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,6 +31,11 @@ public class GeoLocation implements Serializable {
     private Double longitude;
     private Double latitude;
     private String locationCode;
+
+    public GeoLocationEntity() {
+    }
+    
+    
 
     public Long getId() {
         return id;
@@ -80,10 +85,10 @@ public class GeoLocation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GeoLocation)) {
+        if (!(object instanceof GeoLocationEntity)) {
             return false;
         }
-        GeoLocation other = (GeoLocation) object;
+        GeoLocationEntity other = (GeoLocationEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

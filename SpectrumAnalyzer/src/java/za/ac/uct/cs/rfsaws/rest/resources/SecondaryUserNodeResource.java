@@ -2,18 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.uct.cs.rfsaws.web.services;
+package za.ac.uct.cs.rfsaws.rest.resources;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 import za.ac.uct.cs.rfsaws.ejb.SecondaryUserNodeFacade;
 
 /**
@@ -21,9 +20,9 @@ import za.ac.uct.cs.rfsaws.ejb.SecondaryUserNodeFacade;
  *
  * @author James
  */
-@Path("node/secondary/{nodeid}")
+@Path("node/secondary/{nodeid}/")
 @Stateless
-public class SecondaryUserNodeService {
+public class SecondaryUserNodeResource {
 
     @Context
     private UriInfo context;
@@ -34,7 +33,7 @@ public class SecondaryUserNodeService {
     /**
      * Creates a new instance of SecondaryUserNodeService
      */
-    public SecondaryUserNodeService() {
+    public SecondaryUserNodeResource() {
     }
 
     /**

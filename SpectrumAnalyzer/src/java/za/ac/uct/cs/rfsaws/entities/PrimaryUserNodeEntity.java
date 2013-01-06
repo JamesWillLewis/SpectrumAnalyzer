@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "PRIMARY_USER_NODES")
 @XmlRootElement
-public class PrimaryUserNode implements Serializable {
+public class PrimaryUserNodeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,14 +29,19 @@ public class PrimaryUserNode implements Serializable {
     private String nodeID;
     private String nodeUserName;
     @OneToOne
-    private GeoLocation location;
+    private GeoLocationEntity location;
+
+    public PrimaryUserNodeEntity() {
+    }
+    
+    
 
     /**
      * Get the value of Location
      *
      * @return the value of Location
      */
-    public GeoLocation getLocation() {
+    public GeoLocationEntity getLocation() {
         return location;
     }
 
@@ -45,7 +50,7 @@ public class PrimaryUserNode implements Serializable {
      *
      * @param Location new value of Location
      */
-    public void setLocation(GeoLocation Location) {
+    public void setLocation(GeoLocationEntity Location) {
         this.location = Location;
     }
 
@@ -67,10 +72,10 @@ public class PrimaryUserNode implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PrimaryUserNode)) {
+        if (!(object instanceof PrimaryUserNodeEntity)) {
             return false;
         }
-        PrimaryUserNode other = (PrimaryUserNode) object;
+        PrimaryUserNodeEntity other = (PrimaryUserNodeEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
