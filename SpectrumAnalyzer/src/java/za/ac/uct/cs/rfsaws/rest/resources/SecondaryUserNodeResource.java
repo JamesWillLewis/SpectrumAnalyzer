@@ -8,19 +8,21 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import za.ac.uct.cs.rfsaws.ejb.SecondaryUserNodeFacade;
+import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
 
 /**
  * REST Web Service
  *
  * @author James
  */
-@Path("node/secondary/{nodeid}/")
+@Path("node/secondary")
 @Stateless
 public class SecondaryUserNodeResource {
 
@@ -47,13 +49,10 @@ public class SecondaryUserNodeResource {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * PUT method for updating or creating an instance of SecondaryUserNodeService
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
+    @POST
     @Consumes("application/json")
-    public void putJson(String content) {
+    @Path("{nodeid}/submit_bid")
+    public void submitBid(PrimaryUserNodeEntity content) {
+        System.out.println(content.toString());
     }
 }

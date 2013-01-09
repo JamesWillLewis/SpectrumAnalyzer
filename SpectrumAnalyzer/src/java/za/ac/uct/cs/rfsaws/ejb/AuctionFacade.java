@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.ejb;
 
 import javax.ejb.EJB;
@@ -11,8 +7,9 @@ import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 
 /**
+ * CRUD operations on Auction entities.
  *
- * @author James
+ * @author James Lewis
  */
 @Stateless
 public class AuctionFacade extends AbstractFacade<AuctionEntity> {

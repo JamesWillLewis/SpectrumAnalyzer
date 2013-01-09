@@ -32,13 +32,14 @@ public class TimerBean {
             Timer timer = timerService.createSingleActionTimer(expireDate, config);
             System.out.println("====[New timer set: "+timer.getInfo()+" - expires in " + timer.getTimeRemaining() + " ms]====");
         } else{
-            System.err.println("TimerService not injected - unable to launch timer");
+            System.err.println("TimerService resource not injected - unable to launch timer");
         }
     }
 
     @Timeout
     public void timeout(Timer timer) {
         System.out.println("====[Timer expired: "+ timer.getInfo()+"]====");
+        //scheduled method calls
         allocationBean.checkAuctions();
     }
 

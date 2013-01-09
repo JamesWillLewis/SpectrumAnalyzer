@@ -22,7 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "LEASES")
-@XmlRootElement
 public class LeaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.ejb;
 
 import javax.ejb.Stateless;
@@ -10,8 +6,9 @@ import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
 
 /**
- *
- * @author James
+ * CRUD operations on Allocation entities. 
+ * 
+ * @author James Lewis
  */
 @Stateless
 public class AllocationFacade extends AbstractFacade<AllocationEntity> {

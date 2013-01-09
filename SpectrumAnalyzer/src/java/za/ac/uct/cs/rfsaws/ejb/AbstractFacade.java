@@ -1,15 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.ejb;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
- *
- * @author James
+ * Abstract super-class of all facade EJBs for the purpose of CRUD database
+ * actions on entities.
+ * 
+ * @author James Lewis
+ * 
  */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;

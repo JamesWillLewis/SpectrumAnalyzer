@@ -21,7 +21,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "BIDS")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "findBidsOfAuction", query = "SELECT b FROM BidEntity b WHERE b.auction = :a")})
 public class BidEntity implements Serializable {

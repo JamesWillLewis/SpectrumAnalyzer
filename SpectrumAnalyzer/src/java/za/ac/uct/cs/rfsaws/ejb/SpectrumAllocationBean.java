@@ -4,19 +4,17 @@
  */
 package za.ac.uct.cs.rfsaws.ejb;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.util.KnapsackAlgorithm;
 import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entities.BidEntity;
 import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
+import za.ac.uct.cs.rfsaws.util.KnapsackAlgorithm;
 
 /**
  *

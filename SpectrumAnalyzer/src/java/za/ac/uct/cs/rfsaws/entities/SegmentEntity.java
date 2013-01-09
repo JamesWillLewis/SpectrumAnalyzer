@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "SEGMENTS")
-@XmlRootElement
 public class SegmentEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

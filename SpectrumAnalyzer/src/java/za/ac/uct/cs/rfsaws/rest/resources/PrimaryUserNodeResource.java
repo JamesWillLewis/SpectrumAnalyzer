@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
 import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
@@ -22,7 +23,7 @@ import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
  *
  * @author James
  */
-@Path("node/primary/{nodeid}/")
+@Path("node/primary")
 @Stateless
 public class PrimaryUserNodeResource {
 
@@ -45,7 +46,8 @@ public class PrimaryUserNodeResource {
      */
     @GET
     @Produces("application/json")
-    public PrimaryUserNodeEntity getJson(@PathParam("nodeid") Long id) {
+    @Path("{nodeid}")
+    public PrimaryUserNodeEntity queryNode(@PathParam("nodeid") Long id) {
         return nodeFacade.find(id);
     }
 
@@ -55,17 +57,25 @@ public class PrimaryUserNodeResource {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
-    @PUT
+    @POST
     @Consumes("application/json")
-    @Path("submit_allocation")
+    @Path("{nodeid}/submit_allocation")
     public void submitAllocation(PrimaryUserNodeEntity content) {
         System.out.println(content.toString());
     }
 
-    @PUT
+    @POST
     @Consumes("application/json")
-    @Path("submit_auction")
+    @Path("{nodeid}/submit_auction")
     public void submitAuction(){
      
     }
+    
+    @POST
+    @Consumes("application/json")
+    @Path("{nodeid}/reclaim_allocation")
+    public void reclaimAllocation(PrimaryUserNodeEntity content) {
+        System.out.println(content.toString());
+    }
+    
 }
