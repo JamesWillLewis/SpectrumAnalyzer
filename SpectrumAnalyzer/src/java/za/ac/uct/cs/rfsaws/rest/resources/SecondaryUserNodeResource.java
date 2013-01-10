@@ -4,18 +4,25 @@
  */
 package za.ac.uct.cs.rfsaws.rest.resources;
 
+import java.util.Calendar;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.SecondaryUserNodeFacade;
-import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.ejb.SegmentFacade;
+import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entities.BidEntity;
+import za.ac.uct.cs.rfsaws.entities.SecondaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.rest.xml.BidBean;
 
 /**
  * REST Web Service
@@ -28,9 +35,12 @@ public class SecondaryUserNodeResource {
 
     @Context
     private UriInfo context;
-    
     @EJB
     private SecondaryUserNodeFacade nodeFacade;
+    @EJB
+    private AuctionFacade auctionFacade;
+    @EJB
+    private SegmentFacade segmentFacade;
 
     /**
      * Creates a new instance of SecondaryUserNodeService
@@ -38,21 +48,23 @@ public class SecondaryUserNodeResource {
     public SecondaryUserNodeResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of za.ac.uct.cs.rfsaws.web.services.SecondaryUserNodeService
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Produces("application/json")
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    @POST
-    @Consumes("application/json")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_bid")
-    public void submitBid(PrimaryUserNodeEntity content) {
-        System.out.println(content.toString());
+    public String submitBid(@PathParam("nodeid") Long id, BidBean bidBean) {
+        SecondaryUserNodeEntity su = nodeFacade.find(id);
+        AuctionEntity targetAuction = auctionFacade.find(bidBean.getAuctionID());
+        Date now = Calendar.getInstance().getTime();
+        if (now.after(targetAuction.getAuctionStart()) && now.before(targetAuction.getAuctionEnd())) {
+            BidEntity newBid = new BidEntity();
+            newBid.setAuction(targetAuction);
+            newBid.setBidValue(bidBean.getValue());
+            newBid.setBidder(su);
+            newBid.setSegment(segmentFacade.find(bidBean.getSegmentID()));
+            return "SUCCESS: Bid has been placed.";
+        } else {
+            return "ERROR: Auction has already closed";
+        }
     }
 }

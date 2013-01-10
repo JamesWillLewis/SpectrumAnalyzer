@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "GEOLOCATIONS")
+@XmlRootElement
 public class GeoLocationEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

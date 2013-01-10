@@ -11,9 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -21,6 +24,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "ALLOCATIONS")
+@XmlRootElement
 public class AllocationEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,8 +61,6 @@ public class AllocationEntity implements Serializable {
 
     public AllocationEntity() {
     }
-    
-    
 
     /**
      * Get the value of endDate

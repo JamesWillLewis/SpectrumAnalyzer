@@ -1,22 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.rest.resources;
 
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.LeaseFacade;
+import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
 
 /**
@@ -26,15 +25,16 @@ import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
  */
 @Path("node")
 @Stateless
-/**
- * Provides general Node REST functions via HTTP requests.
- */
 public class NodeResource {
 
     @Context
     private UriInfo context;
     @EJB
     private LeaseFacade leaseFacade;
+    @EJB
+    private AuctionFacade auctionFacade;
+    @PersistenceContext
+    private EntityManager em;
 
     /**
      * Creates a new instance of NodeService
@@ -48,7 +48,7 @@ public class NodeResource {
      * @return List of web resources/functions.
      */
     @GET
-    @Produces("text/html")
+    @Produces(MediaType.TEXT_HTML)
     public Response listPaths() {
         String htmlResponse = "<!DOCTYPE html><html><head><title>NODE web services</title></head><body><p>";
 
@@ -73,19 +73,27 @@ public class NodeResource {
      */
     @GET
     @Path("list_leases_all")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<LeaseEntity> listLeases() {
         return leaseFacade.findAll();
     }
 
     /**
-     * PUT method for updating or creating an instance of NodeService
+     * Retrieve list of leases.
      *
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
+     * @return an instance of java.lang.String
      */
-    @PUT
-    @Consumes("application/json")
-    public void putXml(String content) {
+    @GET
+    @Path("list_leases_node")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<LeaseEntity> listLeasesNode(@QueryParam("node") Long nodeID) {
+        return em.createNamedQuery("findLeasesOfNode").setParameter("id", nodeID).getResultList();
+    }
+
+    @GET
+    @Path("list_current_auctions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<AuctionEntity> listAuctionsActive() {
+        return em.createNamedQuery("findActiveAuctions").getResultList();
     }
 }

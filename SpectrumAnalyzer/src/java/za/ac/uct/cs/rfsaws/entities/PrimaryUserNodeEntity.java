@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "PRIMARY_USER_NODES")
+@XmlRootElement
 public class PrimaryUserNodeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

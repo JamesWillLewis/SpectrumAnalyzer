@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +23,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "findLeasesOfNode", query = "SELECT l FROM LeaseEntity l WHERE l.node.id = :id")})
 @Table(name = "LEASES")
+@XmlRootElement
 public class LeaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

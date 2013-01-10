@@ -25,8 +25,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "AUCTIONS")
 @NamedQueries({
-    @NamedQuery(name = "findUnresolvedAuctions", query = "SELECT A from AuctionEntity A WHERE A.resolved = 0"
-    + " AND A.auctionEnd <= CURRENT_TIMESTAMP")})
+    @NamedQuery(name = "findUnresolvedAuctions",
+    query = "SELECT A from AuctionEntity A "
+    + "WHERE A.resolved = 0 "
+    + "AND A.auctionEnd <= CURRENT_TIMESTAMP"),
+    @NamedQuery(name = "findActiveAuctions",
+    query = "SELECT A from AuctionEntity A "
+    + "WHERE A.resolved = 0 "
+    + "AND CURRENT_TIMESTAMP BETWEEN A.auctionStart AND A.auctionEnd")})
+@XmlRootElement
 public class AuctionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +50,6 @@ public class AuctionEntity implements Serializable {
 
     public AuctionEntity() {
     }
-    
-    
 
     /**
      * Get the value of resolved

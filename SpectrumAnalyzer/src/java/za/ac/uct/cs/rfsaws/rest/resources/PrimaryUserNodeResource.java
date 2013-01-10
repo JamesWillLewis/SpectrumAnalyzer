@@ -13,10 +13,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import za.ac.uct.cs.rfsaws.ejb.AllocationFacade;
+import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
+import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
+import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.rest.xml.AllocationBean;
+import za.ac.uct.cs.rfsaws.rest.xml.AuctionBean;
 
 /**
  * REST Web Service
@@ -31,6 +38,10 @@ public class PrimaryUserNodeResource {
     private UriInfo context;
     @EJB
     private PrimaryUserNodeFacade nodeFacade;
+    @EJB
+    private AuctionFacade auctionFacade;
+    @EJB
+    private AllocationFacade allocationFacade;
 
     /**
      * Creates a new instance of PrimaryUseService
@@ -39,13 +50,12 @@ public class PrimaryUserNodeResource {
     }
 
     /**
-     * Retrieves representation of an instance of
-     * za.ac.uct.cs.rfsaws.web.services.PrimaryUseService
+     * Retrieves representation of an instance of PrimaryUseService
      *
-     * @return an instance of za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity
+     * @return an instance of PrimaryUserNodeEntity
      */
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("{nodeid}")
     public PrimaryUserNodeEntity queryNode(@PathParam("nodeid") Long id) {
         return nodeFacade.find(id);
@@ -57,25 +67,46 @@ public class PrimaryUserNodeResource {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
-    @POST
-    @Consumes("application/json")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_allocation")
-    public void submitAllocation(PrimaryUserNodeEntity content) {
-        System.out.println(content.toString());
+    public String submitAllocation(@PathParam("nodeid") Long id, AllocationBean allocationBean) {
+        PrimaryUserNodeEntity pu = nodeFacade.find(id);
+        AllocationEntity allocationEntity = new AllocationEntity();
+
+        allocationEntity.setBandFreqLower(allocationBean.getLowerBound());
+        allocationEntity.setBandFreqUpper(allocationBean.getUpperBound());
+        allocationEntity.setBeginDate(allocationBean.getStartDate());
+        allocationEntity.setEndDate(allocationBean.getEndDate());
+        allocationEntity.setPowerConstraint(allocationBean.getPowerConstraint());
+        allocationEntity.setPrimaryUser(pu);
+
+        allocationFacade.create(allocationEntity);
+
+        return String.valueOf(allocationEntity.getId());
     }
 
-    @POST
-    @Consumes("application/json")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_auction")
-    public void submitAuction(){
-     
+    public String submitAuction(@PathParam("nodeid") Long id, AuctionBean auctionBean) {
+        PrimaryUserNodeEntity pu = nodeFacade.find(id);
+        AuctionEntity auctionEntity = new AuctionEntity();
+        auctionEntity.setAllocation(allocationFacade.find(auctionBean.getAllocationID()));
+        auctionEntity.setAuctionEnd(auctionBean.getEndDate());
+        auctionEntity.setAuctionStart(auctionBean.getStartDate());
+        auctionEntity.setResolved((byte) 0);
+
+        auctionFacade.create(auctionEntity);
+
+        return String.valueOf(auctionEntity.getId());
     }
-    
-    @POST
-    @Consumes("application/json")
+
+    @PUT
     @Path("{nodeid}/reclaim_allocation")
-    public void reclaimAllocation(PrimaryUserNodeEntity content) {
-        System.out.println(content.toString());
+    public void reclaimAllocation(@PathParam("nodeid") Long id, @QueryParam(value = "alloc") Long allocID) {
+        allocationFacade.remove(allocationFacade.find(allocID));
     }
-    
 }

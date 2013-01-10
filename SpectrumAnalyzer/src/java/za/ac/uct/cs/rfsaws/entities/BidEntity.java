@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "BIDS")
 @NamedQueries({
     @NamedQuery(name = "findBidsOfAuction", query = "SELECT b FROM BidEntity b WHERE b.auction = :a")})
+@XmlRootElement
 public class BidEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
