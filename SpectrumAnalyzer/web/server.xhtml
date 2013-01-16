@@ -21,15 +21,19 @@
 
                     <h:outputLabel value="Port number:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.port}"/>
 
-                    <h:outputLabel value="# of Primary Nodes:"/> <span style="padding-left: 50px"/> <h:outputLabel value="###"/>
+                    <h:outputLabel value="# of Primary Nodes:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.primaryNodeCount}"/>
 
-                    <h:outputLabel value="# of Secondary Nodes:"/> <span style="padding-left: 50px"/> <h:outputLabel value="###"/>
+                    <h:outputLabel value="# of Secondary Nodes:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.secondaryNodeCount}"/>
 
-                    <h:outputLabel value="# of Active Leases:"/> <span style="padding-left: 50px"/> <h:outputLabel value="###"/>
+                    <h:outputLabel value="# of Active Leases:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.activeLeaseCount}"/>
 
-                    <h:outputLabel value="# of Active Auctions:"/> <span style="padding-left: 50px"/> <h:outputLabel value="###"/>
+                    <h:outputLabel value="# of Active Auctions:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.activeAuctionCount}"/>
 
-                    <h:outputLabel value="# of Available Allocations:"/> <span style="padding-left: 50px"/> <h:outputLabel value="###"/>
+                    <h:outputLabel value="# of Available Allocations:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.availbableAllocationsCount}"/>
+
+                    <h:outputLabel value="# of Available Segments:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.availableSegmentCount}"/>
+
+                    <h:outputLabel value="# of Active Bids:"/> <span style="padding-left: 50px"/> <h:outputLabel value="#{serverBean.activeBidCount}"/>
 
                 </h:panelGrid>
             </ui:define>

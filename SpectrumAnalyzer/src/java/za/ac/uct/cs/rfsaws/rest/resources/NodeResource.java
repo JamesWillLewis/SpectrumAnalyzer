@@ -33,7 +33,7 @@ public class NodeResource {
     private LeaseFacade leaseFacade;
     @EJB
     private AuctionFacade auctionFacade;
-    @PersistenceContext
+    @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
     /**

@@ -4,6 +4,7 @@
  */
 package za.ac.uct.cs.rfsaws.rest.resources;
 
+import java.util.Calendar;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.PUT;
@@ -107,6 +108,8 @@ public class PrimaryUserNodeResource {
     @PUT
     @Path("{nodeid}/reclaim_allocation")
     public void reclaimAllocation(@PathParam("nodeid") Long id, @QueryParam(value = "alloc") Long allocID) {
-        allocationFacade.remove(allocationFacade.find(allocID));
+        AllocationEntity allocationEntity = allocationFacade.find(allocID);
+        allocationEntity.setEndDate(Calendar.getInstance().getTime());
+        allocationFacade.edit(allocationEntity);
     }
 }
