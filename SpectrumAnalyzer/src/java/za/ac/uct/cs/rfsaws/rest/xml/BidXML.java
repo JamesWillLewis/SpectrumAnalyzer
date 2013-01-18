@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @XmlRootElement(name = "bid")
 public class BidXML {

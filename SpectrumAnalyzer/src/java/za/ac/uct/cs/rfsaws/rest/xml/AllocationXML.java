@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @XmlRootElement(name="alloc")
 public class AllocationXML {

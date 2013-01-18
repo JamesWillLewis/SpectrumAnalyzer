@@ -2,6 +2,10 @@ package za.ac.uct.cs.rfsaws.jsf.util;
 
 import javax.faces.model.DataModel;
 
+/**
+ *
+ * @author James William Lewis (james.will.lewis@gmail.com)
+ */
 public abstract class PaginationHelper {
 
     private int pageSize;

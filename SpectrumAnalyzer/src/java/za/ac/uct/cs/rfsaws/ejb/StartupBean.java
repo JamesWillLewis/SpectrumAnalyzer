@@ -14,7 +14,7 @@ import javax.ejb.Startup;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Startup
 @Singleton

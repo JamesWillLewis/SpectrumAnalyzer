@@ -15,7 +15,7 @@ import javax.ejb.TimerService;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Singleton
 public class TimerBean {

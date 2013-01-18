@@ -3,12 +3,12 @@ package za.ac.uct.cs.rfsaws.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
+import za.ac.uct.cs.rfsaws.entity.AllocationEntity;
 
 /**
  * CRUD operations on Allocation entities. 
  * 
- * @author James Lewis
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
 public class AllocationFacade extends AbstractFacade<AllocationEntity> {

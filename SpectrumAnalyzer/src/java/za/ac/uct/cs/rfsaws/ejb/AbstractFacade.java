@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 /**
  * Abstract super-class of all facade EJBs for the purpose of CRUD database
  * actions on entities.
- * 
- * @author James Lewis
- * 
+ *
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 public abstract class AbstractFacade<T> {
+
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
@@ -57,5 +57,4 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
 }

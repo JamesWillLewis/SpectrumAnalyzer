@@ -4,12 +4,12 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
 
 /**
  * CRUD operations on Auction entities.
  *
- * @author James Lewis
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
 public class AuctionFacade extends AbstractFacade<AuctionEntity> {

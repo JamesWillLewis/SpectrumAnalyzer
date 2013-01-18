@@ -1,8 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package za.ac.uct.cs.rfsaws.rest.resources;
+
+package za.ac.uct.cs.rfsaws.rest.resource;
 
 import java.util.Calendar;
 import javax.ejb.EJB;
@@ -20,16 +17,16 @@ import javax.ws.rs.core.MediaType;
 import za.ac.uct.cs.rfsaws.ejb.AllocationFacade;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
-import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
-import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.entity.AllocationEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.PrimaryUserNodeEntity;
 import za.ac.uct.cs.rfsaws.rest.xml.AllocationXML;
 import za.ac.uct.cs.rfsaws.rest.xml.AuctionXML;
 
 /**
  * REST Web Service
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Path("node/primary")
 @Stateless

@@ -1,4 +1,4 @@
-package za.ac.uct.cs.rfsaws.rest.resources;
+package za.ac.uct.cs.rfsaws.rest.resource;
 
 import java.util.List;
 import javax.ejb.EJB;
@@ -15,13 +15,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.LeaseFacade;
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
-import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.LeaseEntity;
 
 /**
  * REST Web Service
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Path("node")
 @Stateless

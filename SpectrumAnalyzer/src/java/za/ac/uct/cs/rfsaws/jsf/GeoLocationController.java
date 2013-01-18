@@ -13,11 +13,14 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import za.ac.uct.cs.rfsaws.ejb.GeoLocationFacade;
-import za.ac.uct.cs.rfsaws.entities.GeoLocationEntity;
+import za.ac.uct.cs.rfsaws.entity.GeoLocationEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 
-
+/**
+ *
+ * @author James William Lewis (james.will.lewis@gmail.com)
+ */
 @ManagedBean(name="geoLocationController")
 @SessionScoped
 public class GeoLocationController implements Serializable {

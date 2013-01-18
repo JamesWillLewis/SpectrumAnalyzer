@@ -1,6 +1,6 @@
 package za.ac.uct.cs.rfsaws.jsf;
 
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
 import za.ac.uct.cs.rfsaws.jsf.util.JsfUtil;
 import za.ac.uct.cs.rfsaws.jsf.util.PaginationHelper;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
@@ -18,6 +18,10 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+/**
+ *
+ * @author James William Lewis (james.will.lewis@gmail.com)
+ */
 @ManagedBean(name = "auctionController")
 @SessionScoped
 public class AuctionController implements Serializable {

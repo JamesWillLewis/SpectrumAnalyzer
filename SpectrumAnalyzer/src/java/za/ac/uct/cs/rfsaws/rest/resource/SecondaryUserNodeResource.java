@@ -1,8 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package za.ac.uct.cs.rfsaws.rest.resources;
+
+package za.ac.uct.cs.rfsaws.rest.resource;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -19,15 +16,15 @@ import javax.ws.rs.core.UriInfo;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.SecondaryUserNodeFacade;
 import za.ac.uct.cs.rfsaws.ejb.SegmentFacade;
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
-import za.ac.uct.cs.rfsaws.entities.BidEntity;
-import za.ac.uct.cs.rfsaws.entities.SecondaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.BidEntity;
+import za.ac.uct.cs.rfsaws.entity.SecondaryUserNodeEntity;
 import za.ac.uct.cs.rfsaws.rest.xml.BidXML;
 
 /**
  * REST Web Service
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Path("node/secondary")
 @Stateless

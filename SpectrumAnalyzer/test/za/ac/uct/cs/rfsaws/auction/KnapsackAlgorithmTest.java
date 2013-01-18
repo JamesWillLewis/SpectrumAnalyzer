@@ -12,8 +12,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import za.ac.uct.cs.rfsaws.entities.BidEntity;
-import za.ac.uct.cs.rfsaws.entities.SegmentEntity;
+import za.ac.uct.cs.rfsaws.entity.BidEntity;
+import za.ac.uct.cs.rfsaws.entity.SegmentEntity;
 
 /**
  *

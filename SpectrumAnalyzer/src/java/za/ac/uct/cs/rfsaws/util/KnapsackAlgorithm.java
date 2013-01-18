@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
-import za.ac.uct.cs.rfsaws.entities.BidEntity;
+import za.ac.uct.cs.rfsaws.entity.BidEntity;
 
 /**
  * Highly optimized and tuned implementation of the Branch-and-Bound algorithm
@@ -17,7 +17,7 @@ import za.ac.uct.cs.rfsaws.entities.BidEntity;
  * have shown that this implementation can perform within acceptable time on
  * hundreds of items, using randomly generated test samples.
  *
- * @author James Lewis
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 public class KnapsackAlgorithm {
 

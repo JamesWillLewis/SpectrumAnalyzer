@@ -7,11 +7,11 @@ package za.ac.uct.cs.rfsaws.ejb;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.SecondaryUserNodeEntity;
+import za.ac.uct.cs.rfsaws.entity.SecondaryUserNodeEntity;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
 public class SecondaryUserNodeFacade extends AbstractFacade<SecondaryUserNodeEntity> {

@@ -11,14 +11,14 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
-import za.ac.uct.cs.rfsaws.entities.BidEntity;
-import za.ac.uct.cs.rfsaws.entities.LeaseEntity;
+import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
+import za.ac.uct.cs.rfsaws.entity.BidEntity;
+import za.ac.uct.cs.rfsaws.entity.LeaseEntity;
 import za.ac.uct.cs.rfsaws.util.KnapsackAlgorithm;
 
 /**
  *
- * @author James
+ * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
 public class SpectrumAllocationBean {
