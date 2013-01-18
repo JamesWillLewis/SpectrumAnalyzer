@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @XmlRootElement(name = "lease")
-public class LeaseBean {
+public class LeaseXML {
 
     @XmlElement(required = false)
     private Long id;
@@ -28,7 +28,7 @@ public class LeaseBean {
     @XmlElement(required = true, name = "maxPow")
     private Double maxPower;
 
-    public LeaseBean() {
+    public LeaseXML() {
     }
 
     public Long getId() {

@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @XmlRootElement(name = "bid")
-public class BidBean {
+public class BidXML {
 
     @XmlElement(required = true, name = "auction")
     private Long auctionID;
@@ -17,7 +17,7 @@ public class BidBean {
     @XmlElement(required = true, name = "segment")
     private Long segmentID;
 
-    public BidBean() {
+    public BidXML() {
     }
 
     public Long getAuctionID() {

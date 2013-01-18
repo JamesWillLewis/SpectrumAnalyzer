@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author James
  */
 @XmlRootElement(name="auction")
-public class AuctionBean {
+public class AuctionXML {
     
     @XmlElement(required=true,name="alloc")
     private Long allocationID;
@@ -18,7 +18,7 @@ public class AuctionBean {
     @XmlElement(required=true,name="end")
     private Date endDate;
 
-    public AuctionBean() {
+    public AuctionXML() {
     }
 
     public Long getAllocationID() {

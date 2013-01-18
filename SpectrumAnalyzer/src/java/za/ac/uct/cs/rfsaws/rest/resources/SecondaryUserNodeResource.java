@@ -22,7 +22,7 @@ import za.ac.uct.cs.rfsaws.ejb.SegmentFacade;
 import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entities.BidEntity;
 import za.ac.uct.cs.rfsaws.entities.SecondaryUserNodeEntity;
-import za.ac.uct.cs.rfsaws.rest.xml.BidBean;
+import za.ac.uct.cs.rfsaws.rest.xml.BidXML;
 
 /**
  * REST Web Service
@@ -52,7 +52,7 @@ public class SecondaryUserNodeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_bid")
-    public String submitBid(@PathParam("nodeid") Long id, BidBean bidBean) {
+    public String submitBid(@PathParam("nodeid") Long id, BidXML bidBean) {
         SecondaryUserNodeEntity su = nodeFacade.find(id);
         AuctionEntity targetAuction = auctionFacade.find(bidBean.getAuctionID());
         Date now = Calendar.getInstance().getTime();

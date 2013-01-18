@@ -23,8 +23,8 @@ import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
 import za.ac.uct.cs.rfsaws.entities.AllocationEntity;
 import za.ac.uct.cs.rfsaws.entities.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entities.PrimaryUserNodeEntity;
-import za.ac.uct.cs.rfsaws.rest.xml.AllocationBean;
-import za.ac.uct.cs.rfsaws.rest.xml.AuctionBean;
+import za.ac.uct.cs.rfsaws.rest.xml.AllocationXML;
+import za.ac.uct.cs.rfsaws.rest.xml.AuctionXML;
 
 /**
  * REST Web Service
@@ -72,7 +72,7 @@ public class PrimaryUserNodeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_allocation")
-    public String submitAllocation(@PathParam("nodeid") Long id, AllocationBean allocationBean) {
+    public String submitAllocation(@PathParam("nodeid") Long id, AllocationXML allocationBean) {
         PrimaryUserNodeEntity pu = nodeFacade.find(id);
         AllocationEntity allocationEntity = new AllocationEntity();
 
@@ -92,7 +92,7 @@ public class PrimaryUserNodeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("{nodeid}/submit_auction")
-    public String submitAuction(@PathParam("nodeid") Long id, AuctionBean auctionBean) {
+    public String submitAuction(@PathParam("nodeid") Long id, AuctionXML auctionBean) {
         PrimaryUserNodeEntity pu = nodeFacade.find(id);
         AuctionEntity auctionEntity = new AuctionEntity();
         auctionEntity.setAllocation(allocationFacade.find(auctionBean.getAllocationID()));
