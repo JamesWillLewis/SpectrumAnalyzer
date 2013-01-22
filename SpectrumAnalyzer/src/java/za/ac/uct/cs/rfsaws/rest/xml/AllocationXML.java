@@ -6,38 +6,38 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
+ *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
-@XmlRootElement(name="alloc")
+@XmlRootElement(name = "alloc")
 public class AllocationXML {
 
-    @XmlElement(required=false)
+    @XmlElement(required = false)
     private Long id;
-    
     /**
      * Contiguous spectrum band upper frequency bound
      */
-    @XmlElement(required=true, name="upper")
+    @XmlElement(required = true, name = "upper")
     private Double upperBound;
     /**
      * Contiguous spectrum band lower frequency bound
      */
-    @XmlElement(required=true, name="lower")
+    @XmlElement(required = true, name = "lower")
     private Double lowerBound;
     /**
      * Maximum signal propagation power
      */
-    @XmlElement(required=true, name="power_lim")
+    @XmlElement(required = true, name = "power_lim")
     private Double powerConstraint;
     /**
      * Date/time when allocation available for secondary user.
      */
-    @XmlElement(required=true, name="start")
+    @XmlElement(required = true, name = "start")
     private Date startDate;
     /**
      * Date/time when allocation claimed by primary user.
      */
-    @XmlElement(required=true, name="end")
+    @XmlElement(required = true, name = "end")
     private Date endDate;
 
     public AllocationXML() {
@@ -90,7 +90,4 @@ public class AllocationXML {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    
-    
-    
 }

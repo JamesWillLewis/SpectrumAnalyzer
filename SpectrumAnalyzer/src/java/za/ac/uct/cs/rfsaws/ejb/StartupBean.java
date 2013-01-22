@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.ejb;
 
 import java.util.Calendar;
@@ -13,6 +9,9 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 /**
+ * Singleton session bean, with eager loading, launched on application
+ * initialization to submit a "startup timer", and perform any pre-execution
+ * operations.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
@@ -21,6 +20,9 @@ import javax.ejb.Startup;
 @DependsOn("TimerBean")
 public class StartupBean {
 
+    /**
+     * Injected timer bean.
+     */
     @EJB
     TimerBean timerBean;
 
@@ -36,7 +38,7 @@ public class StartupBean {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.SECOND, 1);
         System.out.println("====[Launching initial timeout - expires in 1 seconds===");
-        timerBean.setNewTimer(c.getTime(),"startup-timer");
+        timerBean.pushNewTimer(c.getTime(), "startup-timer");
     }
 
     /**

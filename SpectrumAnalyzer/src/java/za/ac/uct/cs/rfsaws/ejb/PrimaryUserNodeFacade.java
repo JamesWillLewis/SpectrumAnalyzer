@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.ejb;
 
 import javax.ejb.Stateless;
@@ -10,11 +6,15 @@ import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entity.PrimaryUserNodeEntity;
 
 /**
+ * Session bean face which provides Create/Retrieve/Update/Destroy functions for
+ * a PrimaryUserNode persistence entity. Incorporates a JPA persistence context for
+ * entity management.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
 public class PrimaryUserNodeFacade extends AbstractFacade<PrimaryUserNodeEntity> {
+
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 
@@ -26,5 +26,4 @@ public class PrimaryUserNodeFacade extends AbstractFacade<PrimaryUserNodeEntity>
     public PrimaryUserNodeFacade() {
         super(PrimaryUserNodeEntity.class);
     }
-    
 }

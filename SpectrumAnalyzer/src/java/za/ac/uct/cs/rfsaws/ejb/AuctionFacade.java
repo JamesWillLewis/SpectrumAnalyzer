@@ -7,8 +7,10 @@ import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
 
 /**
- * CRUD operations on Auction entities.
- *
+ * Session bean face which provides Create/Retrieve/Update/Destroy
+ * functions for an Auction persistence entity.
+ * Incorporates a JPA persistence context for entity management. 
+ * 
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
 @Stateless
@@ -31,7 +33,7 @@ public class AuctionFacade extends AbstractFacade<AuctionEntity> {
      */
     @Override
     public void create(AuctionEntity entity) {
-        broker.setNewTimer(entity.getAuctionEnd(), "auction-timer(ID=" + entity.getId() + ")");
+        broker.pushNewTimer(entity.getAuctionEnd(), "auction-timer(ID=" + entity.getId() + ")");
         super.create(entity);
     }
 
@@ -43,7 +45,7 @@ public class AuctionFacade extends AbstractFacade<AuctionEntity> {
      */
     @Override
     public void edit(AuctionEntity entity) {
-        broker.setNewTimer(entity.getAuctionEnd(), "auction-timer(ID=" + entity.getId() + ")");
+        broker.pushNewTimer(entity.getAuctionEnd(), "auction-timer(ID=" + entity.getId() + ")");
         super.edit(entity);
     }
 

@@ -6,7 +6,9 @@ import javax.persistence.PersistenceContext;
 import za.ac.uct.cs.rfsaws.entity.AllocationEntity;
 
 /**
- * CRUD operations on Allocation entities. 
+ * Session bean face which provides Create/Retrieve/Update/Destroy
+ * functions for an Allocation persistence entity.
+ * Incorporates a JPA persistence context for entity management. 
  * 
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
