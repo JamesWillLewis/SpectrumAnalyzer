@@ -13,6 +13,9 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Database entity which represents an Allocation. An Allocation is a contiguous
+ * band of available white-space spectrum, owned by a primary user
+ * and leased temporarily to secondary users.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */

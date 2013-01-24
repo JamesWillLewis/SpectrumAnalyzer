@@ -55,8 +55,8 @@
         <role-name>rfsaws_admin</role-name>
     </security-role>
     <security-role>
-        <description>REST resourced access
-</description>
+        <description>REST resource access
+        </description>
         <role-name>rfsaws_client</role-name>
     </security-role>
 </web-app>

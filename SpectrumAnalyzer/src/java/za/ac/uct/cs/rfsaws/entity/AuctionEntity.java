@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.entity;
 
 import java.io.Serializable;
@@ -19,6 +15,9 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Database entity which represents an Auction. An auction
+ * takes place to assign leases to secondary users to allow them
+ * to make secondary use of available spectrum.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */

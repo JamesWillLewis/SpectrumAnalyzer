@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.entity;
 
 import java.io.Serializable;
@@ -13,6 +9,9 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Database entity which represents a geographical-location. An Allocation is a
+ * contiguous band of available white-space spectrum, owned by a primary user
+ * and leased temporarily to secondary users.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
@@ -34,8 +33,6 @@ public class GeoLocationEntity implements Serializable {
 
     public GeoLocationEntity() {
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -68,10 +65,6 @@ public class GeoLocationEntity implements Serializable {
     public void setLocationCode(String locationCode) {
         this.locationCode = locationCode;
     }
-    
-    
-    
-    
 
     @Override
     public int hashCode() {
@@ -79,8 +72,6 @@ public class GeoLocationEntity implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-    
-    
 
     @Override
     public boolean equals(Object object) {

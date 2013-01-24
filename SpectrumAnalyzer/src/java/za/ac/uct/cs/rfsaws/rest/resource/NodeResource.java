@@ -13,10 +13,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.LeaseFacade;
 import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entity.LeaseEntity;
+
+
 
 /**
  * REST Web Service
@@ -31,8 +32,6 @@ public class NodeResource {
     private UriInfo context;
     @EJB
     private LeaseFacade leaseFacade;
-    @EJB
-    private AuctionFacade auctionFacade;
     @PersistenceContext(unitName = "SpectrumAnalyzerPU")
     private EntityManager em;
 

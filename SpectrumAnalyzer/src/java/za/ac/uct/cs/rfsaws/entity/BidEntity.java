@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.ac.uct.cs.rfsaws.entity;
 
 import java.io.Serializable;
@@ -16,6 +12,9 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Database entity which represents a Bid. A bid is placed by a 
+ * secondary user in an auction, in order to claim a lease for
+ * a segment of allocated white-space spectrum.
  *
  * @author James William Lewis (james.will.lewis@gmail.com)
  */
@@ -41,14 +40,11 @@ public class BidEntity implements Serializable {
      */
     @ManyToOne
     private SegmentEntity segment;
-
     @ManyToOne
     private AuctionEntity auction;
 
     public BidEntity() {
     }
-    
-    
 
     /**
      * Get the value of auction
@@ -67,7 +63,6 @@ public class BidEntity implements Serializable {
     public void setAuction(AuctionEntity auction) {
         this.auction = auction;
     }
-
 
     /**
      * Get the value of segment

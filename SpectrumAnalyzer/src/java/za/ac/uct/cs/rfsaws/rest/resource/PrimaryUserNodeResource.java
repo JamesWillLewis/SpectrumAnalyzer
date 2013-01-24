@@ -1,19 +1,19 @@
-
 package za.ac.uct.cs.rfsaws.rest.resource;
 
 import java.util.Calendar;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.PUT;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 import za.ac.uct.cs.rfsaws.ejb.AllocationFacade;
 import za.ac.uct.cs.rfsaws.ejb.AuctionFacade;
 import za.ac.uct.cs.rfsaws.ejb.PrimaryUserNodeFacade;
@@ -22,6 +22,8 @@ import za.ac.uct.cs.rfsaws.entity.AuctionEntity;
 import za.ac.uct.cs.rfsaws.entity.PrimaryUserNodeEntity;
 import za.ac.uct.cs.rfsaws.rest.xml.AllocationXML;
 import za.ac.uct.cs.rfsaws.rest.xml.AuctionXML;
+
+
 
 /**
  * REST Web Service
@@ -102,11 +104,16 @@ public class PrimaryUserNodeResource {
         return String.valueOf(auctionEntity.getId());
     }
 
-    @PUT
+    @GET
     @Path("{nodeid}/reclaim_allocation")
-    public void reclaimAllocation(@PathParam("nodeid") Long id, @QueryParam(value = "alloc") Long allocID) {
+    public String reclaimAllocation(@PathParam("nodeid") Long id, @QueryParam(value = "alloc") Long allocID) {
         AllocationEntity allocationEntity = allocationFacade.find(allocID);
-        allocationEntity.setEndDate(Calendar.getInstance().getTime());
-        allocationFacade.edit(allocationEntity);
+        if (allocationEntity != null) {
+            allocationEntity.setEndDate(Calendar.getInstance().getTime());
+            allocationFacade.edit(allocationEntity);
+            return "SUCCESS";
+        } else {
+            return "FAIL - ALLOCATION ID=" + allocID + " DOES NOT EXIST";
+        }
     }
 }
